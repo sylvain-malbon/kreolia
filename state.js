@@ -5,7 +5,7 @@
 let curFam          = "kilti";
 let curTab          = "langue";
 let curTheme        = "light";
-let selectedCreole  = null;
+let selectedCreole  = null; // index string "0", "1", ... ou null
 let searchQuery     = "";
 let playing         = false;
 let playTimeout     = null;
@@ -28,7 +28,7 @@ export const getUILang = () => uiLang;
 export function setFam(fam)                     { curFam = fam; }
 export function setTab(tab)                     { curTab = tab; }
 export function setTheme(theme)                 { curTheme = theme; }
-export function setSelectedCreole(iso)          { selectedCreole = iso; }
+export function setSelectedCreole(value)        { selectedCreole = value; }
 export function setSearchQuery(q)               { searchQuery = q; }
 export function setUILang(lang)                 { uiLang = lang; }
 export function setPlaying(val)                 { playing = val; }

@@ -361,6 +361,14 @@ header {
   line-height: 1.7; margin-bottom: 32px; max-width: 420px;
 }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-with-icon { display: inline-flex; align-items: center; gap: 10px; }
+.btn-icon { width: 16px; height: 16px; flex: 0 0 16px; opacity: .95; }
+.btn-glyph { display: inline-flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1; font-weight: 700; }
+.btn-primary .btn-icon { color: #fff; }
+.btn-secondary .btn-icon { color: var(--primary); }
+.btn-glyph-reset { transform: translateY(-0.5px); }
+.btn-glyph-check { transform: translateY(-0.5px); }
+.btn-text { display: inline-block; }
 .btn-primary {
   background: var(--primary); color: #fff;
   padding: 12px 26px; border-radius: 50px; border: none;
@@ -401,7 +409,11 @@ header {
   object-fit: cover;
   z-index: 0;
   filter: saturate(1.05);
+  opacity: 1;
+  transition: opacity .55s ease;
+  will-change: opacity;
 }
+.hero-img.is-fading { opacity: 0; }
 /* overlay gradient bottom */
 .hero-right::after {
   content: '';
@@ -416,6 +428,28 @@ header {
 .hero-right > *:not(.hero-img) {
   position: relative;
   z-index: 1;
+}
+.hero-carousel-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.hero-carousel-bar {
+  width: 28px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.42);
+  opacity: .9;
+  transition: background .2s ease, opacity .2s ease, transform .2s ease;
+}
+.hero-carousel-bar.active {
+  background: #fff;
+  opacity: 1;
+  transform: scaleX(1.06);
 }
 .creole-grid-label {
   font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
@@ -791,19 +825,27 @@ header {
    ============================================================ */
 .progress-strip {
   display: flex; gap: 5px; margin-top: auto; padding: 20px 24px;
-  background: rgba(0,0,0,.25);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-top: 1px solid rgba(255,255,255,.15);
+  background: transparent;
+  border-top: 0;
   width: 100%;
   position: relative; z-index: 2;
 }
 .progress-cell {
   flex: 1; height: 5px; border-radius: 3px;
-  background: rgba(255,255,255,.25);
-  transition: background .3s;
+  background: rgba(255,255,255,.52);
+  border: 1px solid rgba(0,0,0,.18);
+  box-shadow: 0 1px 3px rgba(0,0,0,.18);
+  transition: background .3s, border-color .3s;
 }
-.progress-cell.done { background: rgba(255,255,255,.9); }
+.progress-cell.done {
+  background: rgba(255,255,255,.96);
+  border-color: rgba(255,255,255,.7);
+}
+.progress-cell.active {
+  background: #ffffff;
+  border-color: rgba(255,255,255,.95);
+  box-shadow: 0 1px 6px rgba(0,0,0,.24);
+}
 
 /* ============================================================
    SEARCH BAR
@@ -825,7 +867,8 @@ header {
 .search-icon {
   position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
   color: var(--text-3); pointer-events: none;
-  font-size: 16px; line-height: 1;
+  width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1; font-weight: 700;
 }
 
 /* ============================================================

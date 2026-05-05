@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" data-fam="kilti">
+<html lang="fr" data-theme="light" data-fam="kilti">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,47 +27,7 @@
     </div>
     <div class="header-controls">
       <select class="lang-select" id="uiLang" aria-label="Interface language">
-        <option value="fr">FR</option>
-        <option value="en">EN</option>
-        <option value="es">ES</option>
-        <option value="pt">PT</option>
-        <option value="nl">NL</option>
-        <option value="ar">AR</option>
-        <optgroup label="FR-based Creoles">
-          <option value="hat">hat</option><option value="gcf">gcf</option>
-          <option value="rcf">rcf</option><option value="mfe">mfe</option>
-          <option value="crs">crs</option><option value="acf">acf</option>
-          <option value="dcs">dcs</option><option value="gcr">gcr</option>
-          <option value="lou">lou</option>
-        </optgroup>
-        <optgroup label="EN-based Creoles">
-          <option value="jam">jam</option><option value="trf">trf</option>
-          <option value="bzj">bzj</option><option value="gyn">gyn</option>
-          <option value="hwc">hwc</option><option value="svc">svc</option>
-          <option value="gcl">gcl</option><option value="bjs">bjs</option>
-          <option value="aig">aig</option><option value="vic">vic</option>
-          <option value="sln">sln</option><option value="src">src</option>
-          <option value="pcm">pcm</option><option value="kri">kri</option>
-          <option value="tpi">tpi</option><option value="bis">bis</option>
-          <option value="rop">rop</option><option value="srm">srm</option>
-          <option value="djk">djk</option>
-        </optgroup>
-        <optgroup label="PT/ES/NL-based Creoles">
-          <option value="kea">kea</option><option value="pov">pov</option>
-          <option value="for">for</option><option value="aoa">aoa</option>
-          <option value="pre">pre</option><option value="pap">pap</option>
-          <option value="cbk">cbk</option><option value="pln">pln</option>
-          <option value="mof">mof</option><option value="idb">idb</option>
-        </optgroup>
-        <optgroup label="Non-European Creoles">
-          <option value="bew">bew</option><option value="mbf">mbf</option>
-          <option value="mcm">mcm</option><option value="mkn">mkn</option>
-          <option value="pmy">pmy</option>
-        </optgroup>
-        <optgroup label="AR-based Creoles">
-          <option value="kcn">kcn</option><option value="kce">kce</option>
-          <option value="pga">pga</option><option value="shu">shu</option>
-        </optgroup>
+        <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="nl">NL</option><option value="ar">AR</option>
       </select>
       <button type="button" class="ctrl-btn theme-btn" id="themeBtn" title="Light/dark mode">☀</button>
     </div>
@@ -78,13 +38,13 @@
     <button type="button" class="tab-btn active" data-tab="langue" id="tab-langue" role="tab" aria-selected="true" aria-controls="pane-langue">Language</button>
     <button type="button" class="tab-btn" data-tab="cuisine" id="tab-cuisine" role="tab" aria-selected="false" aria-controls="pane-cuisine">Cuisine</button>
     <button type="button" class="tab-btn" data-tab="vie" id="tab-vie" role="tab" aria-selected="false" aria-controls="pane-vie">Daily life</button>
-    <button type="button" class="tab-btn" data-tab="iso" id="tab-iso" role="tab" aria-selected="false" aria-controls="pane-iso">ISO codes</button>
+    <button type="button" class="tab-btn" data-tab="musique" id="tab-musique" role="tab" aria-selected="false" aria-controls="pane-musique">Musique</button>
   </div>
 </nav>
 <div class="hero" id="heroSection">
   <div class="creole-filters">
     <div class="creole-filters-inner">
-      <div class="creole-grid-label" id="heroChipLabel">Family creoles — click to filter</div>
+      <div class="creole-grid-label" id="heroChipLabel">Famille créole à base de</div>
       <div class="creole-chips" id="creoleChips"></div>
     </div>
   </div>
@@ -94,12 +54,23 @@
       <div class="hero-title" id="heroTitle">Aprann Kréyòl</div>
       <div class="hero-sub" id="heroSub">Guadeloupe · Martinique · Réunion · Maurice · Louisiane · Haïti</div>
       <div class="hero-btns">
-        <button type="button" class="btn-primary"   id="heroBtnP">Kòmansé dèpi zéro</button>
-        <button type="button" class="btn-secondary" id="heroBtnS">Mwen ja ka konpwann</button>
+        <button type="button" class="btn-primary btn-with-icon" id="heroBtnP">
+          <span class="btn-icon btn-glyph btn-glyph-reset" aria-hidden="true">↺</span>
+          <span class="btn-text" id="heroBtnPLabel">Kòmansé dèpi zéro</span>
+        </button>
+        <button type="button" class="btn-secondary btn-with-icon" id="heroBtnS">
+          <span class="btn-icon btn-glyph btn-glyph-check" aria-hidden="true">✓</span>
+          <span class="btn-text" id="heroBtnSLabel">Mwen ja ka konpwann</span>
+        </button>
       </div>
     </div>
     <div class="hero-right">
-      <img src="hero-visual.jpg" alt="Hero Visual" class="hero-img">
+      <img src="hero-visual.jpg" alt="Hero Visual" class="hero-img" id="heroCarouselImage">
+      <div class="hero-carousel-controls" aria-hidden="true">
+        <span class="hero-carousel-bar active"></span>
+        <span class="hero-carousel-bar"></span>
+        <span class="hero-carousel-bar"></span>
+      </div>
       <div class="progress-strip" id="progressStrip"></div>
     </div>
   </div>
@@ -107,123 +78,53 @@
 <main class="main">
   <div class="fam-banner" id="famBanner">
     <div>
-      <div class="fam-banner-title"    id="bannerTitle">Kilti</div>
+      <div class="fam-banner-title" id="bannerTitle">Kilti</div>
       <div class="fam-banner-baseline" id="bannerBaseline">Aprann kréyòl — Learn Creole</div>
-      <div class="fam-banner-desc"     id="bannerDesc"></div>
+      <div class="fam-banner-desc" id="bannerDesc"></div>
     </div>
     <div class="fam-banner-stats" id="bannerStats">
       <div class="stat-pill"><strong id="statCount">10</strong> créoles</div>
       <div class="stat-pill"><strong id="statSpeakers">12M+</strong> locuteurs</div>
-      <div class="stat-pill"><strong>ISO</strong> 639-3</div>
+      <div class="stat-pill"><strong>Culture</strong> Langue & Musique</div>
     </div>
   </div>
-  <div class="tab-pane active" id="pane-langue" role="tabpanel" aria-labelledby="tab-langue" aria-hidden="false">
+  <div class="tab-pane active" id="pane-langue" role="tabpanel" aria-labelledby="tab-langue">
     <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input class="search-input" id="searchInput" type="search" aria-label="Search lessons or words"
-        placeholder="Search a lesson, a word…"
-      >
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input class="search-input" id="searchInput" type="search" placeholder="Search a lesson, a word…">
     </div>
     <div class="section-head no-padding-top">
       <div class="section-title" id="langSectionTitle">Language lessons</div>
-      <div class="section-count"  id="langCount"></div>
+      <div class="section-count" id="langCount"></div>
     </div>
     <div class="cards-grid" id="langCards"></div>
     <div class="detail-panel" id="detailPanel">
       <button type="button" class="detail-close" id="detailClose" title="Close (Esc)">×</button>
       <div class="detail-phrase" id="dpPhrase"></div>
-      <div class="detail-fr"     id="dpFr"></div>
+      <div class="detail-fr" id="dpFr"></div>
       <div class="madras-band-thin madras-band-custom"></div>
       <div class="audio-row">
-        <button type="button" class="play-btn" id="playBtn">
-          <svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg>
-        </button>
-        <div class="wave" id="wave">
-          <div class="wbar" style="height:8px"></div>
-          <div class="wbar" style="height:16px"></div>
-          <div class="wbar" style="height:24px"></div>
-          <div class="wbar" style="height:18px"></div>
-          <div class="wbar" style="height:12px"></div>
-          <div class="wbar" style="height:20px"></div>
-          <div class="wbar" style="height:24px"></div>
-          <div class="wbar" style="height:10px"></div>
-        </div>
+        <button type="button" class="play-btn" id="playBtn"><svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg></button>
+        <div class="wave" id="wave"><div class="wbar" style="height:8px"></div><div class="wbar" style="height:16px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:18px"></div><div class="wbar" style="height:12px"></div><div class="wbar" style="height:20px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:10px"></div></div>
         <span class="audio-lbl" id="audioLbl">Tann fraz-la</span>
       </div>
-      <div class="quiz-section">
-        <div class="quiz-q"    id="quizQ"></div>
-        <div class="quiz-opts" id="quizOpts"></div>
-      </div>
+      <div class="quiz-section"><div class="quiz-q" id="quizQ"></div><div class="quiz-opts" id="quizOpts"></div></div>
     </div>
   </div>
-  <div class="tab-pane" id="pane-cuisine">
-    <div class="section-head">
-      <div class="section-title" id="cuisineSectionTitle">Creole cuisine</div>
-      <div class="section-count" id="cuisineCount"></div>
-    </div>
-    <div class="cards-grid" id="cuisineCards"></div>
-  </div>
-  <div class="tab-pane" id="pane-vie">
-    <div class="section-head">
-      <div class="section-title" id="vieSectionTitle">Daily expressions</div>
-      <div class="section-count" id="vieCount"></div>
-    </div>
-    <div class="cards-grid" id="vieCards"></div>
-  </div>
-  <div class="tab-pane" id="pane-iso">
-    <div class="section-head">
-      <div class="section-title">ISO 639-3 codes</div>
-      <div class="section-count" id="isoCount"></div>
-    </div>
-    <table class="iso-table" id="isoTable">
-      <thead>
-        <tr>
-          <th>ISO</th>
-          <th>Nom courant</th>
-          <th>Nom complet</th>
-          <th>Famille</th>
-          <th>Base</th>
-        </tr>
-      </thead>
-      <tbody id="isoTableBody"></tbody>
-    </table>
-  </div>
+  <div class="tab-pane" id="pane-cuisine"><div class="section-head"><div class="section-title" id="cuisineSectionTitle">Creole cuisine</div><div class="section-count" id="cuisineCount"></div></div><div class="cards-grid" id="cuisineCards"></div></div>
+  <div class="tab-pane" id="pane-vie"><div class="section-head"><div class="section-title" id="vieSectionTitle">Daily expressions</div><div class="section-count" id="vieCount"></div></div><div class="cards-grid" id="vieCards"></div></div>
+  <div class="tab-pane" id="pane-musique"><div class="section-head"><div class="section-title" id="musiqueSectionTitle">Musiques créoles</div><div class="section-count" id="musiqueCount"></div></div><div class="cards-grid" id="musiqueCards"></div></div>
 </main>
 <footer>
   <div class="madras-band"></div>
   <div class="footer-inner">
-    <div>
-      <div class="footer-logo" id="footerLogo">Kilti</div>
-      <div class="footer-tagline" id="footerTagline">Kréyòl sé lang nou.<br>All the world's creoles, one platform.</div>
-    </div>
-    <div>
-      <div class="footer-col-title">Familles créoles</div>
-      <div class="footer-links">
-        <a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a>
-        <a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a>
-        <a href="#" data-fam="kultura">Kultura <span class="flink-iso">PT/ES/NL</span></a>
-        <a href="#" data-fam="takafa">Takafa | تكافا <span class="flink-iso">AR</span></a>
-        <a href="#" data-fam="lema">Lema <span class="flink-iso">Malay</span></a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Navigation</div>
-      <div class="footer-links">
-        <a href="#" data-tab="langue">Language</a>
-        <a href="#" data-tab="cuisine">Cuisine</a>
-        <a href="#" data-tab="vie">Daily life</a>
-        <a href="#" data-tab="iso">ISO 639-3 codes</a>
-        <a href="#" data-tab="about">About the project</a>
-      </div>
-    </div>
+    <div><div class="footer-logo" id="footerLogo">Kilti</div><div class="footer-tagline" id="footerTagline">Kréyòl sé lang nou.<br>All the world's creoles, one platform.</div></div>
+    <div><div class="footer-col-title">Familles créoles</div><div class="footer-links"><a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a><a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a><a href="#" data-fam="kultura">Kultura <span class="flink-iso">PT/ES/NL</span></a><a href="#" data-fam="takafa">Takafa <span class="flink-iso">AR</span></a><a href="#" data-fam="lema">Lema <span class="flink-iso">Malay</span></a></div></div>
+    <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="#" data-tab="langue">Language</a><a href="#" data-tab="cuisine">Cuisine</a><a href="#" data-tab="vie">Daily life</a><a href="#" data-tab="musique">Musique</a></div></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Krēolia — All the world's creoles, one platform.</span>
-    <div class="footer-iso-pills" id="footerIsoPills"></div>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Krēolia — All the world's creoles, one platform.</span><div class="footer-iso-pills" id="footerIsoPills"></div></div>
 </footer>
 <div class="toast" id="toast"></div>
-<!-- Avant : <script src="app.js"></script> -->
 <script type="module" src="app.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ import {
 import {
   renderFam, renderChips, renderTab, renderLangue,
   setUILangDOM, togglePlay, closeDetail, stopPlay,
-  openLesson, showToast, renderIsoTable, buildFooterIsos
+  openLesson, showToast, buildFooterIsos
 } from './render.js';
 
 export function bindEvents() {
@@ -113,8 +113,8 @@ export function bindEvents() {
   if (creoleChipsEl) creoleChipsEl.addEventListener('click', e => {
     const chip = e.target.closest('.creole-chip');
     if (!chip) return;
-    const iso = chip.getAttribute('data-iso');
-    setSelectedCreole(getSelectedCreole() === iso ? null : iso);
+    const idx = chip.getAttribute('data-idx');
+    setSelectedCreole(getSelectedCreole() === idx ? null : idx);
     setSearchQuery('');
     if (searchInput) searchInput.value = '';
     closeDetail();
