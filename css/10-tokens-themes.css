@@ -1,0 +1,174 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --font-display: 'Dancing Script', cursive;
+  --font-body: 'DM Sans', sans-serif;
+  --font-ar: 'Amiri', serif;
+  --font-serif: 'Libre Baskerville', serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --transition: .18s ease;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.07), 0 6px 20px rgba(0,0,0,.06);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,.12), 0 12px 40px rgba(0,0,0,.08);
+
+  /* Échelle typographique modulaire ratio ~1.25 */
+  --step-0: clamp(0.875rem, 0.8rem + 0.2vw, 1rem);
+  --step-1: clamp(1.1rem, 1rem + 0.3vw, 1.25rem);
+  --step-2: clamp(1.3rem, 1.1rem + 0.5vw, 1.563rem);
+  --step-3: clamp(1.6rem, 1.3rem + 0.8vw, 1.953rem);
+  --step-4: clamp(2rem, 1.5rem + 1.5vw, 2.441rem);
+  --step-5: clamp(2.4rem, 1.8rem + 2vw, 4.25rem);
+}
+
+/* Base factorisee: carte claire commune a toutes les familles en mode light */
+[data-theme="light"] {
+  --bg-card: #FFFFFF;
+}
+
+/* ============================================================
+   FAMILLES — TOKENS THÈMES
+   ============================================================ */
+
+/* KILTI (FR-based) — text-3 rehaussé pour WCAG AA */
+[data-fam="kilti"][data-theme="light"] {
+  --bg-page:#F7EFE7; --bg-surface:#F2E8DD;
+  --primary:#9D3F2F; --primary-dim:#D8B8A7; --accent:#D49330;
+  --secondary:#7F4B54; --text-1:#2A231F; --text-2:#74625B;
+  --text-3:#7A6A5C; --border:#D7C7BC; --border-2:#B8A597;
+  --madras-a:#7B4F20; --madras-b:#F4C430; --madras-c:#C0392B;
+  --madras-d:#2E7D32; --madras-e:#1565C0;
+  --hero-grad: linear-gradient(135deg, #F7EFE7 0%, #F0E0D0 100%);
+}
+[data-fam="kilti"][data-theme="dark"] {
+  --bg-page:#1A1412; --bg-card:#0F0908; --bg-surface:#241A18;
+  --primary:#D56F4E; --primary-dim:#4B1F18; --accent:#E6AA52;
+  --secondary:#A16A75; --text-1:#F0E7DE; --text-2:#9B857A;
+  --text-3:#7A6A5E; --border:#2E211E; --border-2:#3A2D2A;
+  --madras-a:#8A4A22; --madras-b:#E6AA52; --madras-c:#E05A4A;
+  --madras-d:#4CAF52; --madras-e:#4D9FE8;
+  --hero-grad: linear-gradient(135deg, #1A1412 0%, #221510 100%);
+}
+
+/* KALCHA (EN-based) — text-3 rehaussé */
+[data-fam="kalcha"][data-theme="light"] {
+  --bg-page:#F0F4F7; --bg-surface:#E4EDF4;
+  --primary:#1A4F7A; --primary-dim:#B8D0E8; --accent:#E07B39;
+  --secondary:#3A7D6B; --text-1:#1A2A35; --text-2:#5A7080;
+  --text-3:#637888; --border:#C5D5E0; --border-2:#A0BBD0;
+  --madras-a:#1A4F7A; --madras-b:#E07B39; --madras-c:#D4293A;
+  --madras-d:#2A8A56; --madras-e:#F4C430;
+  --hero-grad: linear-gradient(135deg, #F0F4F7 0%, #DFF0FC 100%);
+}
+[data-fam="kalcha"][data-theme="dark"] {
+  --bg-page:#0E1620; --bg-card:#081018; --bg-surface:#121E2A;
+  --primary:#5A9FD4; --primary-dim:#0F2A40; --accent:#E8924A;
+  --secondary:#3A9A80; --text-1:#D8ECF8; --text-2:#6A90A8;
+  --text-3:#5A7888; --border:#152030; --border-2:#1E3040;
+  --madras-a:#1A5A8A; --madras-b:#E8924A; --madras-c:#E04060;
+  --madras-d:#2AB070; --madras-e:#E8C440;
+  --hero-grad: linear-gradient(135deg, #0E1620 0%, #0A1822 100%);
+}
+
+/* KULTURA PT (PT-based) — text-3 rehaussé */
+[data-fam="kultura-pt"][data-theme="light"] {
+  --bg-page:#F5F0E8; --bg-surface:#EDE6D8;
+  --primary:#5B6F2A; --primary-dim:#C8D8A0; --accent:#C8500A;
+  --secondary:#7A5A30; --text-1:#2A2515; --text-2:#6A6040;
+  --text-3:#706840; --border:#D0C8B0; --border-2:#B8B090;
+  --madras-a:#5B6F2A; --madras-b:#C8500A; --madras-c:#D4293A;
+  --madras-d:#F4B820; --madras-e:#1A60A0;
+  --hero-grad: linear-gradient(135deg, #F5F0E8 0%, #EAE0CC 100%);
+}
+[data-fam="kultura-pt"][data-theme="dark"] {
+  --bg-page:#161810; --bg-card:#0E1008; --bg-surface:#1C2010;
+  --primary:#8AB040; --primary-dim:#2A3810; --accent:#E07040;
+  --secondary:#A08040; --text-1:#E8F0D0; --text-2:#8A9070;
+  --text-3:#6A7050; --border:#242810; --border-2:#303818;
+  --madras-a:#6A8030; --madras-b:#E07040; --madras-c:#E04060;
+  --madras-d:#F0C030; --madras-e:#3080C0;
+  --hero-grad: linear-gradient(135deg, #161810 0%, #101408 100%);
+}
+
+/* KULTURA ES (ES-based) — text-3 rehaussé */
+[data-fam="kultura-es"][data-theme="light"] {
+  --bg-page:#F9EFE9; --bg-surface:#F4E2D8;
+  --primary:#C64A22; --primary-dim:#F3C1AB; --accent:#E56F30;
+  --secondary:#9A4A30; --text-1:#2E1A13; --text-2:#7A4F3E;
+  --text-3:#8A6858; --border:#E0B8A8; --border-2:#CC9B86;
+  --madras-a:#C64A22; --madras-b:#E56F30; --madras-c:#B92E1C;
+  --madras-d:#E8A820; --madras-e:#2A6FB6;
+  --hero-grad: linear-gradient(135deg, #F9EFE9 0%, #F6DCCF 100%);
+}
+[data-fam="kultura-es"][data-theme="dark"] {
+  --bg-page:#1C120F; --bg-card:#120A08; --bg-surface:#241511;
+  --primary:#E36A3A; --primary-dim:#4A2012; --accent:#F08A4D;
+  --secondary:#C77756; --text-1:#F6E2D8; --text-2:#B98773;
+  --text-3:#8A6858; --border:#352018; --border-2:#4A2D21;
+  --madras-a:#D85A2D; --madras-b:#F08A4D; --madras-c:#CC4A35;
+  --madras-d:#E0B030; --madras-e:#3C82C8;
+  --hero-grad: linear-gradient(135deg, #1C120F 0%, #25150F 100%);
+}
+
+/* KULTURA NL (NL-based) — text-3 rehaussé */
+[data-fam="kultura-nl"][data-theme="light"] {
+  --bg-page:#EEF2FA; --bg-surface:#E3EAF8;
+  --primary:#1F4FBF; --primary-dim:#B9CCF4; --accent:#3D73E0;
+  --secondary:#2E4F8A; --text-1:#18233D; --text-2:#4E6289;
+  --text-3:#5C6F96; --border:#C4D1EB; --border-2:#A5B8DB;
+  --madras-a:#1F4FBF; --madras-b:#3D73E0; --madras-c:#2C3EA8;
+  --madras-d:#2A9D6F; --madras-e:#E29C30;
+  --hero-grad: linear-gradient(135deg, #EEF2FA 0%, #DCE7FB 100%);
+}
+[data-fam="kultura-nl"][data-theme="dark"] {
+  --bg-page:#0E1528; --bg-card:#08101F; --bg-surface:#121D35;
+  --primary:#4F82F2; --primary-dim:#122A57; --accent:#6A9CFF;
+  --secondary:#4D6FB8; --text-1:#DDE8FF; --text-2:#8EA9DB;
+  --text-3:#6A84B4; --border:#182846; --border-2:#22365E;
+  --madras-a:#3F6FDE; --madras-b:#6A9CFF; --madras-c:#3959C8;
+  --madras-d:#35A67A; --madras-e:#E0A84A;
+  --hero-grad: linear-gradient(135deg, #0E1528 0%, #12203A 100%);
+}
+
+/* TAKAFA (AR-based) — text-3 rehaussé */
+[data-fam="takafa"][data-theme="light"] {
+  --bg-page:#F5F0EB; --bg-surface:#EDE5DC;
+  --primary:#6B3A1F; --primary-dim:#D8C0A8; --accent:#B8850A;
+  --secondary:#8A4A5A; --text-1:#271A10; --text-2:#70584A;
+  --text-3:#7A6858; --border:#D5C8B8; --border-2:#BBAA98;
+  --madras-a:#6B3A1F; --madras-b:#B8850A; --madras-c:#CC3020;
+  --madras-d:#2A7A50; --madras-e:#C04060;
+  --hero-grad: linear-gradient(135deg, #F5F0EB 0%, #EEE0D0 100%);
+}
+[data-fam="takafa"][data-theme="dark"] {
+  --bg-page:#18120D; --bg-card:#100B07; --bg-surface:#201610;
+  --primary:#C0784A; --primary-dim:#401A0A; --accent:#D0A040;
+  --secondary:#A06070; --text-1:#F0E8E0; --text-2:#907870;
+  --text-3:#786860; --border:#28180E; --border-2:#382418;
+  --madras-a:#905030; --madras-b:#D0A040; --madras-c:#E05840;
+  --madras-d:#40B070; --madras-e:#D05070;
+  --hero-grad: linear-gradient(135deg, #18120D 0%, #1A1008 100%);
+}
+
+/* LEMA (Malay-based) — text-3 rehaussé */
+[data-fam="lema"][data-theme="light"] {
+  --bg-page:#F0F5F2; --bg-surface:#E0EDE8;
+  --primary:#1D5C4A; --primary-dim:#A8D8C8; --accent:#C05820;
+  --secondary:#5A406A; --text-1:#101E1A; --text-2:#4A6A60;
+  --text-3:#507868; --border:#B8D0C8; --border-2:#90B8B0;
+  --madras-a:#1D5C4A; --madras-b:#C05820; --madras-c:#D4293A;
+  --madras-d:#E8B820; --madras-e:#6040A0;
+  --hero-grad: linear-gradient(135deg, #F0F5F2 0%, #D8EDE8 100%);
+}
+[data-fam="lema"][data-theme="dark"] {
+  --bg-page:#0C1812; --bg-card:#07100D; --bg-surface:#102018;
+  --primary:#3A9870; --primary-dim:#0A2818; --accent:#E07840;
+  --secondary:#8060A0; --text-1:#D0ECE4; --text-2:#508878;
+  --text-3:#407060; --border:#102018; --border-2:#183028;
+  --madras-a:#208060; --madras-b:#E07840; --madras-c:#E04060;
+  --madras-d:#E0C030; --madras-e:#7060C0;
+  --hero-grad: linear-gradient(135deg, #0C1812 0%, #081510 100%);
+}
+

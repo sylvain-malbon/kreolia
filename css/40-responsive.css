@@ -1,0 +1,175 @@
+/* ============================================================
+   RESPONSIVE — 3 breakpoints consolidés, zéro doublon
+   ============================================================ */
+
+/* ── TABLETTE ≤ 960px ─────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero {
+    max-width: calc(100% - 2rem);
+    margin: 14px auto 10px;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 16px 32px;
+  }
+  .hero-right { min-height: 280px; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+  .fam-banner {
+    grid-template-columns: 1fr;
+    padding: 20px 20px;
+    margin-top: 28px;
+  }
+  .fam-banner-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 36px 16px 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 8px 16px;
+  }
+  .fam-pills { margin-left: 0; }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 28px;
+  }
+
+  .culture-subbar { padding: 14px 0 10px; }
+
+  .tabbar-inner { overflow-x: auto; }
+  .tab-btn { padding: 12px 14px; font-size: 12px; }
+
+  .langue-section-card { padding: 20px 14px 14px; }
+}
+
+/* ── MOBILE ≤ 640px ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .header-inner { padding: 6px 12px; gap: 6px; }
+  .brand-logo { width: 36px; height: 40px; }
+  .logo { font-size: 20px; }
+  .brand-by { font-size: 9px; }
+  .fam-pills { gap: 3px; margin-left: 2px; }
+  .fam-pill { padding: 4px 8px; font-size: 10px; }
+  .fam-pill .pill-iso { display: none; }
+  .header-controls { gap: 4px; }
+  .ctrl-btn { padding: 5px 10px; font-size: 11px; }
+  .ctrl-btn.theme-btn { width: 32px; }
+  .lang-select { font-size: 10px; padding: 4px 6px; }
+
+  .hero { max-width: calc(100% - 1rem); padding: 4px; }
+  .hero-inner { padding: 20px 12px 24px; gap: 16px; }
+  .hero-eyebrow { font-size: 10px; }
+  .hero-sub { margin-bottom: 18px; line-height: 1.55; }
+  .hero-right { min-height: 220px; }
+  .creole-grid-label { font-size: 9px; margin-bottom: 14px; }
+  .creole-chips { gap: 4px; }
+  .creole-chip { font-size: 10px; padding: 4px 10px; }
+
+  .fam-banner { margin-top: 20px; padding: 16px 14px; gap: 12px; }
+  .fam-banner-baseline { font-size: 12px; }
+  .fam-banner-desc { font-size: 13px; line-height: 1.5; }
+  .stat-pill { font-size: 11px; padding: 4px 10px; }
+
+  .section-head { padding-top: 24px; margin-bottom: 16px; }
+  .cards-grid { grid-template-columns: 1fr; gap: 10px; }
+  .lesson-card, .recipe-card, .expr-card { border-radius: var(--radius-sm); }
+
+  .detail-panel { padding: 18px 16px; margin-top: 16px; border-radius: var(--radius-md); }
+  .detail-fr { font-size: 13px; margin-bottom: 14px; }
+  .audio-row { gap: 10px; margin-bottom: 18px; }
+  .play-btn { width: 40px; height: 40px; }
+  .play-btn svg { width: 14px; height: 14px; }
+  .wbar { width: 3px; }
+  .audio-lbl { font-size: 11px; }
+  .quiz-section { margin-top: 4px; }
+  .quiz-q { font-size: 12px; margin-bottom: 10px; }
+  .quiz-opts { gap: 6px; }
+  .qopt { font-size: 12px; padding: 8px 14px; }
+
+  .recipe-origin { font-size: 10px; }
+  .recipe-desc { font-size: 12px; }
+  .expr-situation { font-size: 9px; margin-bottom: 8px; }
+  .expr-fr { font-size: 12px; margin-bottom: 8px; }
+  .expr-note { font-size: 11px; }
+
+  .iso-table th { font-size: 10px; padding: 6px 10px; }
+  .iso-table td { padding: 8px 10px; font-size: 11px; }
+  .search-input { font-size: 13px; padding: 10px 16px 10px 38px; }
+  .search-icon { font-size: 14px; left: 12px; }
+  .footer-inner { padding: 28px 12px 20px; }
+  .footer-logo { font-size: 22px; }
+  .footer-tagline { font-size: 12px; }
+  .footer-col-title { font-size: 10px; margin-bottom: 12px; }
+  .footer-links a { font-size: 12px; gap: 4px; }
+  .footer-bottom { padding: 10px 12px 18px; font-size: 10px; }
+  .toast { padding: 9px 18px; font-size: 12px; }
+  .progress-cell { height: 4px; }
+  .tab-btn { padding: 10px 10px; font-size: 11px; }
+  .madras-band { height: 5px; }
+  .madras-band-thin { height: 2px; }
+
+  .auth-modal-box { padding: 28px 18px 22px; border-radius: var(--radius-lg); }
+  .auth-modal-logo { font-size: 24px; margin-bottom: 16px; }
+  .auth-tab-btn { font-size: 12px; padding: 7px 8px; }
+  .auth-field input { font-size: 13px; padding: 10px 12px; }
+  .auth-submit { font-size: 13px; padding: 12px; }
+  .user-chip { max-width: 80px; font-size: 10px; }
+  .auth-btn { font-size: 11px; padding: 5px 10px; }
+  .logout-btn { font-size: 10px; padding: 4px 9px; }
+
+  .langue-section-card { padding: 14px 10px 10px; }
+
+  .culture-subbar { gap: 4px; }
+  .culture-sub-btn { font-size: 11px; padding: 6px 14px; }
+}
+
+/* ── PETIT MOBILE ≤ 420px ─────────────────────────────────── */
+@media (max-width: 420px) {
+  .header-inner { padding: 4px 8px; gap: 4px; }
+  .brand-logo { width: 28px; height: 32px; }
+  .logo { font-size: 16px; letter-spacing: 0; }
+  .brand-text-wrapper { gap: 2px; }
+  .fam-pills { margin-left: 0; }
+  .header-controls .lang-select { display: none; }
+
+  .hero-inner { padding: 16px 10px 18px; }
+  .hero-right { min-height: 180px; }
+  .creole-chip { font-size: 9px; padding: 3px 8px; }
+  .fam-banner-desc { display: none; }
+  .card-tag { font-size: 9px; padding: 2px 8px; margin-bottom: 8px; }
+  .card-translation { font-size: 12px; }
+  .btn-listen { padding: 6px 12px; font-size: 11px; }
+  .detail-panel { padding: 14px 10px; }
+  .play-btn { width: 36px; height: 36px; }
+  .play-btn svg { width: 13px; height: 13px; }
+  .quiz-q { font-size: 11px; }
+  .qopt { font-size: 11px; padding: 7px 12px; }
+  .madras-band { height: 3px; }
+  .footer-bottom { gap: 8px; }
+  .culture-sub-btn { font-size: 10px; padding: 5px 10px; }
+}

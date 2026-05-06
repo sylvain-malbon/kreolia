@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Krēolia — Creole Cultures</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
 <header>
   <div class="madras-band"></div>
   <div class="header-inner">
@@ -15,7 +19,7 @@
       <span></span><span></span><span></span>
     </button>
     <div class="brand">
-      <img class="brand-logo" src="kreolia-logomark.svg" alt="Krēolia logo">
+      <img class="brand-logo" src="assets/images/kreolia-logomark.svg" alt="Krēolia logo">
       <div class="brand-text-wrapper">
         <span class="logo" id="headerLogo">Kilti</span>
         <span class="brand-by">by Krēolia</span>
@@ -27,28 +31,53 @@
       <div class="fam-pill" data-fam="kultura-pt">Kultura <span class="pill-iso">PT</span></div>
       <div class="fam-pill" data-fam="kultura-es">Kultura <span class="pill-iso">ES</span></div>
       <div class="fam-pill" data-fam="kultura-nl">Kultura <span class="pill-iso">NL</span></div>
-      <div class="fam-pill" data-fam="takafa">Takafa | تكافا <span class="pill-iso">AR</span></div>
-      <div class="fam-pill" data-fam="lema">Lema <span class="pill-iso">Malay</span></div>
+      <div class="fam-pill" data-fam="takafa">Takafa <span class="pill-iso">AR</span></div>
+      <div class="fam-pill" data-fam="lema">Lema <span class="pill-iso">MS</span></div>
     </div>
     <div class="header-controls">
-      <select class="lang-select" id="uiLang" aria-label="Interface language">
-        <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="nl">NL</option><option value="ar">AR</option><option value="ms">MS</option>
-      </select>
+      <select class="lang-select" id="uiLang" aria-label="Interface language"></select>
       <span class="user-chip" id="userChip" style="display:none"></span>
-      <button type="button" class="ctrl-btn auth-btn" id="authBtn" title="Connexion / Inscription">Connexion</button>
-      <button type="button" class="ctrl-btn logout-btn" id="logoutBtn" style="display:none" title="Se déconnecter">✕ Déco</button>
-      <button type="button" class="ctrl-btn theme-btn" id="themeBtn" title="Light/dark mode">☀</button>
+      <button type="button" class="ctrl-btn auth-btn" id="authBtn">Connexion</button>
+      <button type="button" class="ctrl-btn logout-btn" id="logoutBtn" style="display:none">✕ Déco</button>
+      <button type="button" class="ctrl-btn theme-btn" id="themeBtn" title="Light/dark">☀</button>
+    </div>
+  </div>
+
+  <!-- Barre de recherche globale -->
+  <div class="search-bar-global">
+    <div class="search-bar-inner">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="search"
+        placeholder="Rechercher une leçon, un mot, un plat…"
+        autocomplete="off"
+        aria-label="Recherche globale"
+      >
     </div>
   </div>
 </header>
-<nav class="tabbar" aria-label="Primary navigation">
+
+<!-- ============================================================
+     TABBAR — 4 onglets principaux
+     ============================================================ -->
+<nav class="tabbar" aria-label="Navigation principale">
   <div class="tabbar-inner" role="tablist">
-    <button type="button" class="tab-btn active" data-tab="langue" id="tab-langue" role="tab" aria-selected="true" aria-controls="pane-langue">Language</button>
-    <button type="button" class="tab-btn" data-tab="cuisine" id="tab-cuisine" role="tab" aria-selected="false" aria-controls="pane-cuisine">Cuisine</button>
-    <button type="button" class="tab-btn" data-tab="vie" id="tab-vie" role="tab" aria-selected="false" aria-controls="pane-vie">Daily life</button>
-    <button type="button" class="tab-btn" data-tab="musique" id="tab-musique" role="tab" aria-selected="false" aria-controls="pane-musique">Musique</button>
+    <button type="button" class="tab-btn active" data-tab="langue"
+      id="tab-langue" role="tab" aria-selected="true" aria-controls="pane-langue">Langue</button>
+    <button type="button" class="tab-btn" data-tab="culture"
+      id="tab-culture" role="tab" aria-selected="false" aria-controls="pane-culture">Culture</button>
+    <button type="button" class="tab-btn" data-tab="apropos"
+      id="tab-apropos" role="tab" aria-selected="false" aria-controls="pane-apropos">À propos</button>
+    <button type="button" class="tab-btn" data-tab="communaute"
+      id="tab-communaute" role="tab" aria-selected="false" aria-controls="pane-communaute">Communauté</button>
   </div>
 </nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
 <div class="hero" id="heroSection">
   <div class="creole-filters">
     <div class="creole-filters-inner">
@@ -73,7 +102,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="hero-visual.jpg" alt="Hero Visual" class="hero-img" id="heroCarouselImage">
+      <img src="assets/images/hero-visual.jpg" alt="Hero Visual" class="hero-img" id="heroCarouselImage">
       <div class="hero-carousel-controls" aria-hidden="true">
         <span class="hero-carousel-bar active"></span>
         <span class="hero-carousel-bar"></span>
@@ -83,7 +112,13 @@
     </div>
   </div>
 </div>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
 <main class="main">
+
+  <!-- Bannière famille -->
   <div class="fam-banner" id="famBanner">
     <div>
       <div class="fam-banner-title" id="bannerTitle">Kilti</div>
@@ -91,49 +126,167 @@
       <div class="fam-banner-desc" id="bannerDesc"></div>
     </div>
     <div class="fam-banner-stats" id="bannerStats">
-      <div class="stat-pill"><strong id="statCount">10</strong> créoles</div>
+      <div class="stat-pill"><strong id="statCount">6</strong> créoles</div>
       <div class="stat-pill"><strong id="statSpeakers">12M+</strong> locuteurs</div>
       <div class="stat-pill"><strong>Culture</strong> Langue & Musique</div>
     </div>
   </div>
+
+  <!-- ======================================================
+       ONGLET LANGUE
+       ====================================================== -->
   <div class="tab-pane active" id="pane-langue" role="tabpanel" aria-labelledby="tab-langue">
-    <div class="search-wrap">
-      <span class="search-icon" aria-hidden="true">⌕</span>
-      <input class="search-input" id="searchInput" type="search" placeholder="Search a lesson, a word…">
+    <div class="section-head no-padding-top">
+      <div class="section-title" id="langSectionTitle">Leçons de langue</div>
+      <div class="section-count" id="langCount"></div>
     </div>
-    <section class="langue-section-card" aria-label="Language lessons section">
-      <div class="section-head no-padding-top">
-        <div class="section-title" id="langSectionTitle">Language lessons</div>
-        <div class="section-count" id="langCount"></div>
-      </div>
-      <div class="cards-grid" id="langCards"></div>
-      <div class="detail-panel" id="detailPanel">
-        <button type="button" class="detail-close" id="detailClose" title="Close (Esc)">×</button>
-        <div class="detail-phrase" id="dpPhrase"></div>
-        <div class="detail-fr" id="dpFr"></div>
-        <div class="madras-band-thin madras-band-custom"></div>
-        <div class="audio-row">
-          <button type="button" class="play-btn" id="playBtn"><svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg></button>
-          <div class="wave" id="wave"><div class="wbar" style="height:8px"></div><div class="wbar" style="height:16px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:18px"></div><div class="wbar" style="height:12px"></div><div class="wbar" style="height:20px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:10px"></div></div>
-          <span class="audio-lbl" id="audioLbl">Tann fraz-la</span>
+    <div class="cards-grid" id="langCards"></div>
+
+    <!-- Panneau détail leçon -->
+    <div class="detail-panel" id="detailPanel">
+      <button type="button" class="detail-close" id="detailClose" title="Fermer (Esc)">×</button>
+      <div class="detail-phrase" id="dpPhrase"></div>
+      <div class="detail-fr" id="dpFr"></div>
+      <div class="madras-band-thin madras-band-custom"></div>
+      <div class="audio-row">
+        <button type="button" class="play-btn" id="playBtn">
+          <svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg>
+        </button>
+        <div class="wave" id="wave">
+          <div class="wbar" style="height:8px"></div>
+          <div class="wbar" style="height:16px"></div>
+          <div class="wbar" style="height:24px"></div>
+          <div class="wbar" style="height:18px"></div>
+          <div class="wbar" style="height:12px"></div>
+          <div class="wbar" style="height:20px"></div>
+          <div class="wbar" style="height:24px"></div>
+          <div class="wbar" style="height:10px"></div>
         </div>
-        <div class="quiz-section"><div class="quiz-q" id="quizQ"></div><div class="quiz-opts" id="quizOpts"></div></div>
+        <span class="audio-lbl" id="audioLbl">Tann fraz-la</span>
       </div>
-    </section>
+      <div class="quiz-section">
+        <div class="quiz-q" id="quizQ"></div>
+        <div class="quiz-opts" id="quizOpts"></div>
+      </div>
+    </div>
   </div>
-  <div class="tab-pane" id="pane-cuisine"><div class="section-head"><div class="section-title" id="cuisineSectionTitle">Creole cuisine</div><div class="section-count" id="cuisineCount"></div></div><div class="cards-grid" id="cuisineCards"></div></div>
-  <div class="tab-pane" id="pane-vie"><div class="section-head"><div class="section-title" id="vieSectionTitle">Daily expressions</div><div class="section-count" id="vieCount"></div></div><div class="cards-grid" id="vieCards"></div></div>
-  <div class="tab-pane" id="pane-musique"><div class="section-head"><div class="section-title" id="musiqueSectionTitle">Musiques créoles</div><div class="section-count" id="musiqueCount"></div></div><div class="cards-grid" id="musiqueCards"></div></div>
+
+  <!-- ======================================================
+       ONGLET CULTURE
+       ====================================================== -->
+  <div class="tab-pane" id="pane-culture" role="tabpanel" aria-labelledby="tab-culture">
+
+    <!-- Sous-onglets Culture -->
+    <div class="culture-subbar" id="cultureSubbar" role="tablist" aria-label="Sous-navigation Culture">
+      <button type="button" class="culture-sub-btn active" data-sub="voyage"
+        id="subTab-voyage" role="tab">Voyage</button>
+      <button type="button" class="culture-sub-btn" data-sub="cuisine"
+        id="subTab-cuisine" role="tab">Cuisine</button>
+      <button type="button" class="culture-sub-btn" data-sub="musique"
+        id="subTab-musique" role="tab">Musique</button>
+      <!-- v2 grisés -->
+      <button type="button" class="culture-sub-btn v2-tab" disabled title="Disponible en v2">
+        Art <span class="v2-badge-sm">v2</span>
+      </button>
+      <button type="button" class="culture-sub-btn v2-tab" disabled title="Disponible en v2">
+        Cinéma <span class="v2-badge-sm">v2</span>
+      </button>
+      <button type="button" class="culture-sub-btn v2-tab" disabled title="Disponible en v2">
+        Histoire <span class="v2-badge-sm">v2</span>
+      </button>
+    </div>
+
+    <!-- Sous-pane Voyage -->
+    <div class="culture-sub-pane active" data-sub-pane="voyage">
+      <div class="section-head no-padding-top">
+        <div class="section-title" id="voyageSectionTitle">Expressions de voyage</div>
+        <div class="section-count" id="voyageCount"></div>
+      </div>
+      <div class="cards-grid" id="voyageCards"></div>
+    </div>
+
+    <!-- Sous-pane Cuisine -->
+    <div class="culture-sub-pane" data-sub-pane="cuisine">
+      <div class="section-head no-padding-top">
+        <div class="section-title" id="cuisineSectionTitle">Cuisine créole</div>
+        <div class="section-count" id="cuisineCount"></div>
+      </div>
+      <div class="cards-grid" id="cuisineCards"></div>
+    </div>
+
+    <!-- Sous-pane Musique -->
+    <div class="culture-sub-pane" data-sub-pane="musique">
+      <div class="section-head no-padding-top">
+        <div class="section-title" id="musiqueSectionTitle">Musiques créoles</div>
+        <div class="section-count" id="musiqueCount"></div>
+      </div>
+      <div class="cards-grid" id="musiqueCards"></div>
+    </div>
+
+  </div>
+
+  <!-- ======================================================
+       ONGLET À PROPOS
+       ====================================================== -->
+  <div class="tab-pane" id="pane-apropos" role="tabpanel" aria-labelledby="tab-apropos">
+    <div class="section-head no-padding-top">
+      <div class="section-title" id="aproposSectionTitle">À propos de Krēolia</div>
+    </div>
+    <div id="aproposCont"></div>
+  </div>
+
+  <!-- ======================================================
+       ONGLET COMMUNAUTÉ
+       ====================================================== -->
+  <div class="tab-pane" id="pane-communaute" role="tabpanel" aria-labelledby="tab-communaute">
+    <div class="section-head no-padding-top">
+      <div class="section-title" id="communauteSectionTitle">Journal de bord</div>
+    </div>
+    <div id="communauteCont"></div>
+  </div>
+
 </main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
   <div class="madras-band"></div>
   <div class="footer-inner">
-    <div><div class="footer-logo" id="footerLogo">Kilti</div><div class="footer-tagline" id="footerTagline">Kréyòl sé lang nou.<br>All the world's creoles, one platform.</div></div>
-    <div><div class="footer-col-title">Familles créoles</div><div class="footer-links"><a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a><a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a><a href="#" data-fam="kultura-pt">Kultura PT <span class="flink-iso">PT</span></a><a href="#" data-fam="kultura-es">Kultura ES <span class="flink-iso">ES</span></a><a href="#" data-fam="kultura-nl">Kultura NL <span class="flink-iso">NL</span></a><a href="#" data-fam="takafa">Takafa <span class="flink-iso">AR</span></a><a href="#" data-fam="lema">Lema <span class="flink-iso">Malay</span></a></div></div>
-    <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="#" data-tab="langue">Language</a><a href="#" data-tab="cuisine">Cuisine</a><a href="#" data-tab="vie">Daily life</a><a href="#" data-tab="musique">Musique</a></div></div>
+    <div>
+      <div class="footer-logo" id="footerLogo">Kilti</div>
+      <div class="footer-tagline" id="footerTagline">Kréyòl sé lang nou.<br>Toutes les langues et cultures créoles, une seule plateforme.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" id="footerFamiliesTitle">Familles créoles</div>
+      <div class="footer-links">
+        <a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a>
+        <a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a>
+        <a href="#" data-fam="kultura-pt">Kultura <span class="flink-iso">PT</span></a>
+        <a href="#" data-fam="kultura-es">Kultura <span class="flink-iso">ES</span></a>
+        <a href="#" data-fam="kultura-nl">Kultura <span class="flink-iso">NL</span></a>
+        <a href="#" data-fam="takafa">Takafa <span class="flink-iso">AR</span></a>
+        <a href="#" data-fam="lema">Lema <span class="flink-iso">MS</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" id="footerNavTitle">Navigation</div>
+      <div class="footer-links">
+        <a href="#" data-tab="langue" id="footerLink-langue">Langue</a>
+        <a href="#" data-tab="culture" id="footerLink-culture">Culture</a>
+        <a href="#" data-tab="apropos" id="footerLink-apropos">À propos</a>
+        <a href="#" data-tab="communaute" id="footerLink-communaute">Communauté</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Krēolia — All the world's creoles, one platform.</span><div class="footer-iso-pills" id="footerIsoPills"></div></div>
+  <div class="footer-bottom">
+    <span>© 2026 Krēolia — Toutes les langues et cultures créoles, une seule plateforme.</span>
+  </div>
 </footer>
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
 <div class="toast" id="toast"></div>
 
 <!-- ============================================================
@@ -144,52 +297,57 @@
     <button type="button" class="auth-modal-close" id="authModalClose" title="Fermer">×</button>
     <div class="auth-modal-logo">Krēolia</div>
 
-    <!-- Onglets -->
     <div class="auth-tabs">
       <button type="button" class="auth-tab-btn active" data-auth-tab="login">Connexion</button>
       <button type="button" class="auth-tab-btn" data-auth-tab="register">Inscription</button>
     </div>
 
-    <!-- Panneau Connexion -->
+    <!-- Connexion -->
     <div class="auth-pane active" data-auth-pane="login">
       <form id="loginForm" novalidate>
         <div class="auth-field">
-          <label for="loginEmail">E-mail</label>
+          <label for="loginEmail" id="label-loginEmail">E-mail</label>
           <input type="email" id="loginEmail" placeholder="vous@exemple.com" autocomplete="email" required>
         </div>
         <div class="auth-field">
-          <label for="loginPassword">Mot de passe</label>
+          <label for="loginPassword" id="label-loginPassword">Mot de passe</label>
           <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
         </div>
         <div class="auth-error" style="display:none"></div>
-        <button type="submit" class="auth-submit">Se connecter</button>
+        <button type="submit" class="auth-submit" id="loginSubmitBtn">Se connecter</button>
       </form>
-      <p class="auth-switch">Pas encore de compte ? <a href="#" data-switch-auth="register">S'inscrire</a></p>
+      <p class="auth-switch" id="loginSwitchText">
+        Pas encore de compte ? <a href="#" data-switch-auth="register" id="loginSwitchLink">S'inscrire</a>
+      </p>
     </div>
 
-    <!-- Panneau Inscription -->
+    <!-- Inscription -->
     <div class="auth-pane" data-auth-pane="register">
       <form id="registerForm" novalidate>
         <div class="auth-field">
-          <label for="registerPseudo">Pseudo</label>
+          <label for="registerPseudo" id="label-registerPseudo">Pseudo</label>
           <input type="text" id="registerPseudo" placeholder="MonPseudo" autocomplete="username" required>
         </div>
         <div class="auth-field">
-          <label for="registerEmail">E-mail</label>
+          <label for="registerEmail" id="label-registerEmail">E-mail</label>
           <input type="email" id="registerEmail" placeholder="vous@exemple.com" autocomplete="email" required>
         </div>
         <div class="auth-field">
-          <label for="registerPassword">Mot de passe <small>(min. 6 caractères)</small></label>
+          <label for="registerPassword" id="label-registerPassword">
+            Mot de passe <small id="label-registerPasswordHint">(min. 6 caractères)</small>
+          </label>
           <input type="password" id="registerPassword" placeholder="••••••••" autocomplete="new-password" required>
         </div>
         <div class="auth-error" style="display:none"></div>
-        <button type="submit" class="auth-submit">Créer mon compte</button>
+        <button type="submit" class="auth-submit" id="registerSubmitBtn">Créer mon compte</button>
       </form>
-      <p class="auth-switch">Déjà un compte ? <a href="#" data-switch-auth="login">Se connecter</a></p>
+      <p class="auth-switch" id="registerSwitchText">
+        Déjà un compte ? <a href="#" data-switch-auth="login" id="registerSwitchLink">Se connecter</a>
+      </p>
     </div>
   </div>
 </div>
 
-<script type="module" src="app.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>

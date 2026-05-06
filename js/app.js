@@ -11,7 +11,11 @@ function initHeroCarousel() {
   const bars = Array.from(document.querySelectorAll('.hero-carousel-bar'));
   if (!image) return;
 
-  const slides = ['hero-visual.jpg', 'hero-visual-2.jpg', 'hero-visual-3.jpg'];
+  const slides = [
+    'assets/images/hero-visual.jpg',
+    'assets/images/hero-visual-2.jpg',
+    'assets/images/hero-visual-3.jpg'
+  ];
 
   let currentIndex = 0;
   let fadeTimer = null;

@@ -1,0 +1,40 @@
+/* ============================================================
+   FOCUS VISIBLES ACCESSIBILITÉ
+   ============================================================ */
+button:focus-visible,
+.ctrl-btn:focus-visible,
+.tab-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.fam-pill:focus-visible,
+.creole-chip:focus-visible,
+.qopt:focus-visible,
+.play-btn:focus-visible,
+.btn-listen:focus-visible,
+a:focus-visible,
+.footer-links a:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--primary-dim);
+  z-index: 2;
+  transition: outline .15s, box-shadow .15s;
+}
+
+/* Skip link accessibilité */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 8px; }
+
