@@ -30,6 +30,16 @@ export function bindEvents() {
     themeBtn.textContent = newTheme === 'light' ? '☀' : '☾';
   });
 
+  /* -- Menu toggle burger ------------------------------------ */
+  const menuToggle = document.getElementById('menuToggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isOpen);
+      document.body.classList.toggle('menu-open', !isOpen);
+    });
+  }
+
   /* -- Bouton connexion --------------------------------------- */
   const authBtn = document.getElementById('authBtn');
   if (authBtn) authBtn.addEventListener('click', () => openAuthModal('login'));

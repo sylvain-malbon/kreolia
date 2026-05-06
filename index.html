@@ -11,6 +11,9 @@
 <header>
   <div class="madras-band"></div>
   <div class="header-inner">
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <div class="brand">
       <img class="brand-logo" src="kreolia-logomark.svg" alt="Krēolia logo">
       <div class="brand-text-wrapper">
@@ -21,13 +24,15 @@
     <div class="fam-pills" id="famPills">
       <div class="fam-pill active" data-fam="kilti">Kilti <span class="pill-iso">FR</span></div>
       <div class="fam-pill" data-fam="kalcha">Kalcha <span class="pill-iso">EN</span></div>
-      <div class="fam-pill" data-fam="kultura">Kultura <span class="pill-iso">PT/ES/NL</span></div>
+      <div class="fam-pill" data-fam="kultura-pt">Kultura <span class="pill-iso">PT</span></div>
+      <div class="fam-pill" data-fam="kultura-es">Kultura <span class="pill-iso">ES</span></div>
+      <div class="fam-pill" data-fam="kultura-nl">Kultura <span class="pill-iso">NL</span></div>
       <div class="fam-pill" data-fam="takafa">Takafa | تكافا <span class="pill-iso">AR</span></div>
       <div class="fam-pill" data-fam="lema">Lema <span class="pill-iso">Malay</span></div>
     </div>
     <div class="header-controls">
       <select class="lang-select" id="uiLang" aria-label="Interface language">
-        <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="nl">NL</option><option value="ar">AR</option>
+        <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="nl">NL</option><option value="ar">AR</option><option value="ms">MS</option>
       </select>
       <span class="user-chip" id="userChip" style="display:none"></span>
       <button type="button" class="ctrl-btn auth-btn" id="authBtn" title="Connexion / Inscription">Connexion</button>
@@ -122,7 +127,7 @@
   <div class="madras-band"></div>
   <div class="footer-inner">
     <div><div class="footer-logo" id="footerLogo">Kilti</div><div class="footer-tagline" id="footerTagline">Kréyòl sé lang nou.<br>All the world's creoles, one platform.</div></div>
-    <div><div class="footer-col-title">Familles créoles</div><div class="footer-links"><a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a><a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a><a href="#" data-fam="kultura">Kultura <span class="flink-iso">PT/ES/NL</span></a><a href="#" data-fam="takafa">Takafa <span class="flink-iso">AR</span></a><a href="#" data-fam="lema">Lema <span class="flink-iso">Malay</span></a></div></div>
+    <div><div class="footer-col-title">Familles créoles</div><div class="footer-links"><a href="#" data-fam="kilti">Kilti <span class="flink-iso">FR</span></a><a href="#" data-fam="kalcha">Kalcha <span class="flink-iso">EN</span></a><a href="#" data-fam="kultura-pt">Kultura PT <span class="flink-iso">PT</span></a><a href="#" data-fam="kultura-es">Kultura ES <span class="flink-iso">ES</span></a><a href="#" data-fam="kultura-nl">Kultura NL <span class="flink-iso">NL</span></a><a href="#" data-fam="takafa">Takafa <span class="flink-iso">AR</span></a><a href="#" data-fam="lema">Lema <span class="flink-iso">Malay</span></a></div></div>
     <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="#" data-tab="langue">Language</a><a href="#" data-tab="cuisine">Cuisine</a><a href="#" data-tab="vie">Daily life</a><a href="#" data-tab="musique">Musique</a></div></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Krēolia — All the world's creoles, one platform.</span><div class="footer-iso-pills" id="footerIsoPills"></div></div>

@@ -67,8 +67,8 @@ a:focus-visible, .footer-links a:focus-visible, select:focus-visible, input:focu
   --hero-grad: linear-gradient(135deg, #0E1620 0%, #0A1822 100%);
 }
 
-/* KULTURA (PT/ES/NL-based) */
-[data-fam="kultura"][data-theme="light"] {
+/* KULTURA PT (PT-based) */
+[data-fam="kultura-pt"][data-theme="light"] {
   --bg-page:#F5F0E8; --bg-card:#FFFFFF; --bg-surface:#EDE6D8;
   --primary:#5B6F2A; --primary-dim:#C8D8A0; --accent:#C8500A;
   --secondary:#7A5A30; --text-1:#2A2515; --text-2:#6A6040;
@@ -77,7 +77,7 @@ a:focus-visible, .footer-links a:focus-visible, select:focus-visible, input:focu
   --madras-d:#F4B820; --madras-e:#1A60A0;
   --hero-grad: linear-gradient(135deg, #F5F0E8 0%, #EAE0CC 100%);
 }
-[data-fam="kultura"][data-theme="dark"] {
+[data-fam="kultura-pt"][data-theme="dark"] {
   --bg-page:#161810; --bg-card:#0E1008; --bg-surface:#1C2010;
   --primary:#8AB040; --primary-dim:#2A3810; --accent:#E07040;
   --secondary:#A08040; --text-1:#E8F0D0; --text-2:#8A9070;
@@ -85,6 +85,46 @@ a:focus-visible, .footer-links a:focus-visible, select:focus-visible, input:focu
   --madras-a:#6A8030; --madras-b:#E07040; --madras-c:#E04060;
   --madras-d:#F0C030; --madras-e:#3080C0;
   --hero-grad: linear-gradient(135deg, #161810 0%, #101408 100%);
+}
+
+/* KULTURA ES (ES-based) */
+[data-fam="kultura-es"][data-theme="light"] {
+  --bg-page:#F9EFE9; --bg-card:#FFFFFF; --bg-surface:#F4E2D8;
+  --primary:#C64A22; --primary-dim:#F3C1AB; --accent:#E56F30;
+  --secondary:#9A4A30; --text-1:#2E1A13; --text-2:#7A4F3E;
+  --text-3:#B28370; --border:#E0B8A8; --border-2:#CC9B86;
+  --madras-a:#C64A22; --madras-b:#E56F30; --madras-c:#B92E1C;
+  --madras-d:#E8A820; --madras-e:#2A6FB6;
+  --hero-grad: linear-gradient(135deg, #F9EFE9 0%, #F6DCCF 100%);
+}
+[data-fam="kultura-es"][data-theme="dark"] {
+  --bg-page:#1C120F; --bg-card:#120A08; --bg-surface:#241511;
+  --primary:#E36A3A; --primary-dim:#4A2012; --accent:#F08A4D;
+  --secondary:#C77756; --text-1:#F6E2D8; --text-2:#B98773;
+  --text-3:#7E5648; --border:#352018; --border-2:#4A2D21;
+  --madras-a:#D85A2D; --madras-b:#F08A4D; --madras-c:#CC4A35;
+  --madras-d:#E0B030; --madras-e:#3C82C8;
+  --hero-grad: linear-gradient(135deg, #1C120F 0%, #25150F 100%);
+}
+
+/* KULTURA NL (NL-based) */
+[data-fam="kultura-nl"][data-theme="light"] {
+  --bg-page:#EEF2FA; --bg-card:#FFFFFF; --bg-surface:#E3EAF8;
+  --primary:#1F4FBF; --primary-dim:#B9CCF4; --accent:#3D73E0;
+  --secondary:#2E4F8A; --text-1:#18233D; --text-2:#4E6289;
+  --text-3:#8397BE; --border:#C4D1EB; --border-2:#A5B8DB;
+  --madras-a:#1F4FBF; --madras-b:#3D73E0; --madras-c:#2C3EA8;
+  --madras-d:#2A9D6F; --madras-e:#E29C30;
+  --hero-grad: linear-gradient(135deg, #EEF2FA 0%, #DCE7FB 100%);
+}
+[data-fam="kultura-nl"][data-theme="dark"] {
+  --bg-page:#0E1528; --bg-card:#08101F; --bg-surface:#121D35;
+  --primary:#4F82F2; --primary-dim:#122A57; --accent:#6A9CFF;
+  --secondary:#4D6FB8; --text-1:#DDE8FF; --text-2:#8EA9DB;
+  --text-3:#5A74A7; --border:#182846; --border-2:#22365E;
+  --madras-a:#3F6FDE; --madras-b:#6A9CFF; --madras-c:#3959C8;
+  --madras-d:#35A67A; --madras-e:#E0A84A;
+  --hero-grad: linear-gradient(135deg, #0E1528 0%, #12203A 100%);
 }
 
 /* TAKAFA (AR-based) */
@@ -195,7 +235,7 @@ header {
 }
 .header-inner {
   max-width: 1180px; margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 16px;
   display: flex; align-items: center;
   gap: 20px; height: 62px;
 }
@@ -250,13 +290,47 @@ header {
 .logo-ar { font-size: 24px; }
 .logo-serif { font-size: 22px; }
 
+/* Menu toggle burger */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+.menu-toggle span {
+  width: 100%;
+  height: 2.5px;
+  background: var(--text-1);
+  border-radius: 2px;
+  transition: background .25s, transform .3s;
+}
+.menu-toggle:hover span {
+  background: var(--primary);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translateY(11px);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-11px);
+}
+
 /* Family pills */
 .fam-pills {
-  display: flex; gap: 4px; flex-wrap: nowrap;
-  overflow-x: auto; flex: 1; padding: 4px 0;
-  margin-left: 12px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+  flex: 1; padding: 4px 0;
+  margin-left: 8px;
 }
-.fam-pills::-webkit-scrollbar { display: none; }
 .fam-pill {
   font-size: 12px; font-weight: 500; white-space: nowrap;
   padding: 5px 14px; border-radius: 50px; cursor: pointer;
@@ -300,7 +374,7 @@ header {
 }
 .tabbar-inner {
   max-width: 1180px; margin: 0 auto;
-  padding: 0 28px; display: flex;
+  padding: 0 16px; display: flex;
 }
 .tab-btn {
   font-size: 13px; font-weight: 500;
@@ -329,7 +403,7 @@ header {
 .creole-filters-inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 24px 28px 0;
+  padding: 24px 16px 0;
   width: 100%;
 }
 
@@ -471,7 +545,7 @@ header {
 /* ============================================================
    MAIN CONTENT
    ============================================================ */
-.main { max-width: 1180px; margin: 0 auto; padding: 0 28px 80px; }
+.main { max-width: 1180px; margin: 0 auto; padding: 0 16px 80px; }
 
 .section-head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -916,7 +990,7 @@ footer {
 }
 .footer-inner {
   max-width: 1180px; margin: 0 auto;
-  padding: 52px 28px 36px;
+  padding: 52px 16px 36px;
   display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
 }
 .footer-logo {
@@ -969,7 +1043,7 @@ footer {
   .fam-banner-stats { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
   .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .header-inner { padding: 0 16px; gap: 10px; height: auto; flex-wrap: wrap; }
-  .fam-pills { margin-left: 0; }
+  .fam-pills { margin-left: 0; gap: 4px; }
   .main { padding: 0 16px 60px; }
   .tabbar-inner { padding: 0 16px; overflow-x: auto; }
   .tab-btn { padding: 12px 14px; font-size: 12px; white-space: nowrap; }
@@ -983,7 +1057,7 @@ footer {
   .brand-logo { width: 44px; height: 49px; }
   .logo { font-size: 22px; }
   .brand-by { font-size: 9px; }
-  .fam-pills { gap: 2px; }
+  .fam-pills { gap: 3px; margin-left: 2px; }
   .fam-pill { padding: 4px 10px; font-size: 10px; }
   .fam-pill .pill-iso { display: none; }
   .header-controls { gap: 4px; }

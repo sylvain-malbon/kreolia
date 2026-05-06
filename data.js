@@ -39,19 +39,54 @@ export const FAMILIES = {
       {name:"Afrobeats Pidgin",origin:"Nigeria",desc:"Naija pidgin sur beats afro.",tag:"Africa",diff:"Moderne"},
     ]
   },
-  kultura: {
-    name:"Kultura", nameClass:"logo-serif", base:"PT/ES/NL-based", eyebrow:"Língua do povo", title:"Aprende o Crioulo", sub:"Cabo Verde · Curaçao · Guiné-Bissau",
-    btnP:"Kumesa di zero", btnS:"N dja papia", baseline:"Kultura — PT/ES/NL Creoles", desc:"Portuguese, Spanish and Dutch-based creoles.", speakers:"4M+", audioLbl:"Uvi frazi", footer:"Kultura é nha raiz.",
+  'kultura-pt': {
+    name:"Kultura", nameClass:"", base:"PT-based", eyebrow:"Língua do povo", title:"Aprende o Crioulo", sub:"Cabo Verde · Guiné-Bissau · Malacca",
+    btnP:"Kumesa di zero", btnS:"N dja papia", baseline:"Kultura PT — Portuguese-based Creoles", desc:"Portuguese-based creoles across Atlantic and Indian Ocean routes.", speakers:"2M+", audioLbl:"Uvi frazi", footer:"Kultura PT é nha raiz.",
     langSectionTitle:"Language lessons", cuisineSectionTitle:"Creole cuisine", vieSectionTitle:"Daily expressions", musiqueSectionTitle:"Músicas crioulas",
-    creoles:[{iso:"kea",name:"Kabuverdianu",full:"Cabo Verde"},{iso:"pap",name:"Papiamentu",full:"ABC Islands"},{iso:"pov",name:"Guinéense",full:"Guinea-Bissau"}],
-    langue:[{tag:"Saudação",phrase:"Modi bu sta?",fr:"Comment vas-tu?",iso:"kea",q:"Modi =",opts:["Où","Comment","Quand"],ans:1}],
+    creoles:[{iso:"kea",name:"Kabuverdianu",full:"Cabo Verde"},{iso:"pov",name:"Guinéense",full:"Guinea-Bissau"},{iso:"mcm",name:"Kristang",full:"Malacca"}],
+    langue:[
+      {tag:"Saudação",phrase:"Modi bu sta?",fr:"Comment vas-tu?",iso:"kea",q:"Modi =",opts:["Où","Comment","Quand"],ans:1},
+      {tag:"Mercado",phrase:"I sta dretu.",fr:"Je vais bien.",iso:"pov",q:"« dretu » veut dire:",opts:["bien","vite","loin"],ans:0},
+      {tag:"Casa",phrase:"Bos teng fome?",fr:"Tu as faim?",iso:"mcm",q:"« fome » =",opts:["soif","faim","sommeil"],ans:1}
+    ],
     cuisine:[{name:"Kachupa",origin:"Cabo Verde",desc:"Ragoût maïs/haricots, plat national.",tag:"Plat",diff:"Moyen"}],
     vie:[{sit:"Mercado",phrase:"Kantu ki e?",fr:"Combien?",note:"Cap-Vert."}],
     musique:[
       {name:"Morna",origin:"Cabo Verde",desc:"Cesária Évora. Saudade créole.",tag:"UNESCO",diff:"Âme"},
       {name:"Funaná",origin:"Cabo Verde",desc:"Accordéon, ferrinho. Rythme paysan.",tag:"Danse",diff:"Rapide"},
-      {name:"Tumba",origin:"Curaçao",desc:"Roi du carnaval, papiamentu.",tag:"Carnaval",diff:"Festif"},
-      {name:"Gumbe",origin:"Guiné-Bissau",desc:"Guitare, rythmes mandingues.",tag:"Afrique",diff:"Moderne"},
+      {name:"Jingkli Nona",origin:"Malacca",desc:"Chant kristang d'origine luso-asiatique.",tag:"Patrimoine",diff:"Rare"}
+    ]
+  },
+  'kultura-es': {
+    name:"Kultura", nameClass:"", base:"ES-based", eyebrow:"Lengua del pueblo", title:"Aprende el Criollo", sub:"Caribe hispano · Chabacano · Papiamentu",
+    btnP:"Empieza desde cero", btnS:"Ya entiendo", baseline:"Kultura ES — Spanish-based Creoles", desc:"Spanish-based creoles and Iberian-contact varieties.", speakers:"1M+", audioLbl:"Escucha frase", footer:"Kultura ES es nuestra voz.",
+    langSectionTitle:"Language lessons", cuisineSectionTitle:"Creole cuisine", vieSectionTitle:"Daily expressions", musiqueSectionTitle:"Música criolla",
+    creoles:[{iso:"ckz",name:"Chabacano",full:"Zamboanga"},{iso:"pap",name:"Papiamentu",full:"ABC Islands"}],
+    langue:[
+      {tag:"Saludo",phrase:"Kosa ta pasa?",fr:"Que se passe-t-il ?",iso:"pap",q:"« Kosa ta pasa » =",opts:["Comment ça va","D'où viens-tu","À bientôt"],ans:0},
+      {tag:"Calle",phrase:"Onde tu anda?",fr:"Où vas-tu ?",iso:"ckz",q:"« onde » signifie:",opts:["où","pourquoi","quand"],ans:0}
+    ],
+    cuisine:[{name:"Sancocho criollo",origin:"Caribe hispano",desc:"Ragoût rustique, légumes et viande.",tag:"Plat",diff:"Moyen"}],
+    vie:[{sit:"Barrio",phrase:"Kuanto ese?",fr:"Combien ça coûte ?",note:"Usage courant."}],
+    musique:[
+      {name:"Tumba",origin:"Curaçao",desc:"Rythme de carnaval en papiamentu.",tag:"Carnaval",diff:"Festif"},
+      {name:"Chabacano Pop",origin:"Zamboanga",desc:"Pop locale avec refrains créoles hispaniques.",tag:"Urbain",diff:"Moderne"}
+    ]
+  },
+  'kultura-nl': {
+    name:"Kultura", nameClass:"", base:"NL-based", eyebrow:"Taal van het volk", title:"Leer Creools", sub:"Dutch-contact · Caribbean · Guyana",
+    btnP:"Begin vanaf nul", btnS:"Ik begrijp al", baseline:"Kultura NL — Dutch-based Creoles", desc:"Dutch-based and Dutch-contact creoles from Atlantic history.", speakers:"0.5M+", audioLbl:"Luister zin", footer:"Kultura NL leeft voort.",
+    langSectionTitle:"Language lessons", cuisineSectionTitle:"Creole cuisine", vieSectionTitle:"Daily expressions", musiqueSectionTitle:"Creoolse muziek",
+    creoles:[{iso:"skw",name:"Skepi",full:"Guyana"},{iso:"brc",name:"Berbice",full:"Guyana"}],
+    langue:[
+      {tag:"Groet",phrase:"Fa yu de?",fr:"Comment vas-tu ?",iso:"skw",q:"« Fa » signifie:",opts:["comment","demain","encore"],ans:0},
+      {tag:"Markt",phrase:"Mi wani bai na winkel.",fr:"Je veux aller au magasin.",iso:"brc",q:"« wani » =",opts:["vouloir","devoir","savoir"],ans:0}
+    ],
+    cuisine:[{name:"Pastechi creool",origin:"Dutch Caribbean",desc:"Petits chaussons frits, version locale.",tag:"Snack",diff:"Facile"}],
+    vie:[{sit:"Straat",phrase:"Fa yu de tide?",fr:"Comment vas-tu aujourd'hui ?",note:"Formule amicale."}],
+    musique:[
+      {name:"Tambú",origin:"Curaçao",desc:"Percussions profondes et chant responsorial.",tag:"Racines",diff:"Intense"},
+      {name:"Kaseko",origin:"Suriname",desc:"Fanfare créole, groove dansant.",tag:"Danse",diff:"Classique"}
     ]
   },
   takafa: {
@@ -84,10 +119,11 @@ export const FAMILIES = {
 };
 
 export const UI_LABELS = {
-  fr:{langue:"Langue",cuisine:"Cuisine",vie:"Vie quotidienne",musique:"Musique",chipLabel:"Famille créole à base de",bases:{"FR-based":"français","EN-based":"anglais","PT/ES/NL-based":"portugais / espagnol / néerlandais","AR-based":"arabe","Malay-based":"malais"}},
-  en:{langue:"Language",cuisine:"Cuisine",vie:"Daily life",musique:"Music",chipLabel:"Creole family based on",bases:{"FR-based":"French","EN-based":"English","PT/ES/NL-based":"Portuguese / Spanish / Dutch","AR-based":"Arabic","Malay-based":"Malay"}},
-  es:{langue:"Idioma",cuisine:"Cocina",vie:"Vida cotidiana",musique:"Música",chipLabel:"Familia criolla basada en",bases:{"FR-based":"francés","EN-based":"inglés","PT/ES/NL-based":"portugués / español / neerlandés","AR-based":"árabe","Malay-based":"malayo"}},
-  pt:{langue:"Língua",cuisine:"Cozinha",vie:"Vida quotidiana",musique:"Música",chipLabel:"Família crioula baseada em",bases:{"FR-based":"francês","EN-based":"inglês","PT/ES/NL-based":"português / espanhol / neerlandês","AR-based":"árabe","Malay-based":"malaio"}},
-  nl:{langue:"Taal",cuisine:"Keuken",vie:"Dagelijks leven",musique:"Muziek",chipLabel:"Creoolse taalfamilie op basis van",bases:{"FR-based":"Frans","EN-based":"Engels","PT/ES/NL-based":"Portugees / Spaans / Nederlands","AR-based":"Arabisch","Malay-based":"Maleis"}},
-  ar:{langue:"اللغة",cuisine:"المطبخ",vie:"الحياة اليومية",musique:"الموسيقى",chipLabel:"عائلة الكريول المبنية على",bases:{"FR-based":"الفرنسية","EN-based":"الإنجليزية","PT/ES/NL-based":"البرتغالية / الإسبانية / الهولندية","AR-based":"العربية","Malay-based":"الماليزية"}}
+  fr:{langue:"Langue",cuisine:"Cuisine",vie:"Vie quotidienne",musique:"Musique",chipLabel:"Famille créole à base de",bases:{"FR-based":"français","EN-based":"anglais","PT-based":"portugais","ES-based":"espagnol","NL-based":"néerlandais","AR-based":"arabe","Malay-based":"malais"}},
+  en:{langue:"Language",cuisine:"Cuisine",vie:"Daily life",musique:"Music",chipLabel:"Creole family based on",bases:{"FR-based":"French","EN-based":"English","PT-based":"Portuguese","ES-based":"Spanish","NL-based":"Dutch","AR-based":"Arabic","Malay-based":"Malay"}},
+  es:{langue:"Idioma",cuisine:"Cocina",vie:"Vida cotidiana",musique:"Música",chipLabel:"Familia criolla basada en",bases:{"FR-based":"francés","EN-based":"inglés","PT-based":"portugués","ES-based":"español","NL-based":"neerlandés","AR-based":"árabe","Malay-based":"malayo"}},
+  pt:{langue:"Língua",cuisine:"Cozinha",vie:"Vida quotidiana",musique:"Música",chipLabel:"Família crioula baseada em",bases:{"FR-based":"francês","EN-based":"inglês","PT-based":"português","ES-based":"espanhol","NL-based":"neerlandês","AR-based":"árabe","Malay-based":"malaio"}},
+  nl:{langue:"Taal",cuisine:"Keuken",vie:"Dagelijks leven",musique:"Muziek",chipLabel:"Creoolse taalfamilie op basis van",bases:{"FR-based":"Frans","EN-based":"Engels","PT-based":"Portugees","ES-based":"Spaans","NL-based":"Nederlands","AR-based":"Arabisch","Malay-based":"Maleis"}},
+  ar:{langue:"اللغة",cuisine:"المطبخ",vie:"الحياة اليومية",musique:"الموسيقى",chipLabel:"عائلة الكريول المبنية على",bases:{"FR-based":"الفرنسية","EN-based":"الإنجليزية","PT-based":"البرتغالية","ES-based":"الإسبانية","NL-based":"الهولندية","AR-based":"العربية","Malay-based":"الماليزية"}},
+  ms:{langue:"Bahasa",cuisine:"Masakan",vie:"Kehidupan harian",musique:"Muzik",chipLabel:"Keluarga kreol berasaskan",bases:{"FR-based":"Perancis","EN-based":"Inggeris","PT-based":"Portugis","ES-based":"Sepanyol","NL-based":"Belanda","AR-based":"Arab","Malay-based":"Melayu"}}
 };
