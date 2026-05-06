@@ -154,9 +154,9 @@ header {
 }
 
 .header-inner {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: var(--site-gutter);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -353,9 +353,9 @@ header {
   transition: background .25s, border-color .25s;
 }
 .search-bar-inner {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: var(--site-gutter);
   position: relative;
 }
 
@@ -368,9 +368,9 @@ header {
   transition: background .25s, border-color .25s;
 }
 .tabbar-inner {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: var(--site-gutter);
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
@@ -478,9 +478,9 @@ header {
    ============================================================ */
 .creole-filters { width: 100%; }
 .creole-filters-inner {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 24px 16px 0;
+  padding: 24px var(--site-gutter) 0;
   width: 100%;
 }
 
@@ -501,8 +501,7 @@ header {
 .hero {
   background: var(--bg-card);
   border-radius: var(--radius-md);
-  /* Aligné sur le même max-width que .main */
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 18px auto 10px;
   padding: 8px;
   transition: border-color .25s, background .25s;
@@ -706,9 +705,14 @@ header {
 }
 
 /* ============================================================
-   MAIN CONTENT
-   ============================================================ */
-.main { max-width: 1180px; margin: 0 auto; padding: 0 16px 80px; }
+  MAIN CONTENT
+  ============================================================ */
+.main {
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  margin: 0 auto;
+  padding-inline: var(--site-gutter);
+  padding-bottom: 80px;
+}
 
 .section-head {
   display: flex;
@@ -1253,9 +1257,9 @@ footer {
   transition: background .25s, border-color .25s;
 }
 .footer-inner {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 52px 16px 36px;
+  padding: 52px var(--site-gutter) 36px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 0.8fr;
   gap: 48px;
@@ -1299,9 +1303,9 @@ footer {
   letter-spacing: .05em;
 }
 .footer-bottom {
-  max-width: 1180px;
+  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
   margin: 0 auto;
-  padding: 16px 28px 28px;
+  padding: 16px var(--site-gutter) 28px;
   font-size: 11px;
   border-top: 1px solid var(--border);
   display: flex;

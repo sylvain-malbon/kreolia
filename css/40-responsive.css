@@ -4,8 +4,9 @@
 
 /* ── TABLETTE ≤ 960px ─────────────────────────────────────── */
 @media (max-width: 960px) {
+  :root { --site-gutter: 12px; }
   .hero {
-    max-width: calc(100% - 2rem);
+    max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
     margin: 14px auto 10px;
   }
   .hero-inner {
@@ -69,6 +70,7 @@
 
 /* ── MOBILE ≤ 640px ───────────────────────────────────────── */
 @media (max-width: 640px) {
+  :root { --site-gutter: 12px; }
   .header-inner { padding: 6px 12px; gap: 6px; }
   .brand-logo { width: 36px; height: 40px; }
   .logo { font-size: 20px; }
@@ -81,7 +83,7 @@
   .ctrl-btn.theme-btn { width: 32px; }
   .lang-select { font-size: 10px; padding: 4px 6px; }
 
-  .hero { max-width: calc(100% - 1rem); padding: 4px; }
+  .hero { max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter))); padding: 4px; }
   .hero-inner { padding: 20px 12px 24px; gap: 16px; }
   .hero-eyebrow { font-size: 10px; }
   .hero-sub { margin-bottom: 18px; line-height: 1.55; }
@@ -150,6 +152,7 @@
 
 /* ── PETIT MOBILE ≤ 420px ─────────────────────────────────── */
 @media (max-width: 420px) {
+  :root { --site-gutter: 8px; }
   .header-inner { padding: 4px 8px; gap: 4px; }
   .brand-logo { width: 28px; height: 32px; }
   .logo { font-size: 16px; letter-spacing: 0; }

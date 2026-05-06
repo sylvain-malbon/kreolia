@@ -6,6 +6,8 @@
   --font-body: 'DM Sans', sans-serif;
   --font-ar: 'Amiri', serif;
   --font-serif: 'Libre Baskerville', serif;
+  --site-max-width: 1180px;
+  --site-gutter: 16px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
