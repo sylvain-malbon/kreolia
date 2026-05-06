@@ -174,7 +174,28 @@ a:focus-visible, .footer-links a:focus-visible, select:focus-visible, input:focu
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  background: var(--bg-page);
+  /* Tartan / madras-like grid (unie-teinte) built from horizontal + vertical
+     repeating gradients. Two layers (major/minor) create varied spacing
+     so some lines are closer than others — subtle, theme-aware and low-noise. */
+  background:
+    /* vertical major lines */
+    repeating-linear-gradient(90deg,
+      color-mix(in srgb, var(--bg-page) 82%, black 18%) 0 2px,
+      transparent 2px 48px),
+    /* vertical minor lines */
+    repeating-linear-gradient(90deg,
+      color-mix(in srgb, var(--bg-page) 92%, black 8%) 0 1px,
+      transparent 1px 16px),
+    /* horizontal major lines */
+    repeating-linear-gradient(0deg,
+      color-mix(in srgb, var(--bg-page) 82%, black 18%) 0 2px,
+      transparent 2px 48px),
+    /* horizontal minor lines */
+    repeating-linear-gradient(0deg,
+      color-mix(in srgb, var(--bg-page) 92%, black 8%) 0 1px,
+      transparent 1px 16px),
+    var(--bg-page);
+  background-attachment: fixed;
   color: var(--text-1);
   transition: background .25s ease, color .25s ease;
   min-height: 100vh;
@@ -412,14 +433,29 @@ header {
 /* ============================================================
    HERO
    ============================================================ */
+/* Shared visual base for card-like blocks */
+.hero,
+.lesson-card,
+.recipe-card,
+.expr-card,
+.fam-banner,
+.detail-panel {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+
 .hero {
-  background: var(--hero-grad);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  /* slightly narrower than main to create breathing room */
+  max-width: calc(1180px - 3rem);
+  margin: 18px auto 10px;
+  padding: 8px; /* small outer padding so inner grid breathes */
 }
 .hero-inner {
-  max-width: 1180px; margin: 0 auto;
-  padding: 64px 28px 72px; /* Adjusted padding-top slightly for balance */
-  display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: flex-start;
+  max-width: 100%; margin: 0 auto;
+  padding: 36px 16px 48px; /* align left/right padding with .main (16px) */
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: flex-start;
 }
 .hero-eyebrow {
   font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
@@ -571,9 +607,7 @@ header {
 .lesson-card {
   background: var(--bg-card);
   border-radius: var(--radius-md);
-  border: 1px solid var(--border);
   overflow: hidden; cursor: pointer;
-  box-shadow: var(--shadow-card);
   transition: border-color .15s, transform .15s, box-shadow .15s;
 }
 .lesson-card:hover {
@@ -615,7 +649,6 @@ header {
 .detail-panel {
   display: none;
   background: var(--bg-surface);
-  border: 1px solid var(--border);
   border-left: 3px solid var(--primary);
   border-radius: var(--radius-lg);
   padding: 28px 32px;
@@ -707,16 +740,25 @@ header {
    FAMILY BANNER
    ============================================================ */
 .fam-banner {
-  background: var(--bg-surface);
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--primary);
+  border-left: 0;
   padding: 28px 32px;
   margin-top: 40px;
   margin-bottom: 0;
   display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start;
   transition: background .25s, border-color .25s;
-  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+.fam-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--accent) 30%));
 }
 .fam-banner-title {
   font-family: var(--font-serif);
@@ -728,7 +770,7 @@ header {
 .fam-banner-stats    { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
 .stat-pill {
   font-size: 12px; color: var(--text-2);
-  background: var(--bg-card); border: 1px solid var(--border);
+  background: var(--bg-surface); border: 1px solid var(--border);
   padding: 6px 14px; border-radius: 50px; white-space: nowrap;
 }
 .stat-pill strong { color: var(--primary); font-weight: 600; }
@@ -743,6 +785,9 @@ header {
   .header-inner, .tabbar-inner, .main, .creole-filters-inner, .hero-inner, .fam-banner {
     padding-left: 12px;
     padding-right: 12px;
+  }
+  .langue-section-card {
+    padding: 20px 14px 14px;
   }
   .hero-inner {
     gap: 24px;
@@ -793,6 +838,9 @@ header {
     padding-left: 4px;
     padding-right: 4px;
   }
+  .langue-section-card {
+    padding: 14px 10px 10px;
+  }
   .hero-inner {
     padding-top: 18px;
     padding-bottom: 18px;
@@ -838,10 +886,8 @@ header {
   ============================================================ */
 .recipe-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden; cursor: pointer;
-  box-shadow: var(--shadow-card);
   transition: border-color .15s, transform .15s, box-shadow .15s;
 }
 .recipe-card:hover {
@@ -874,11 +920,9 @@ header {
    ============================================================ */
 .expr-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 20px 22px;
   cursor: pointer;
-  box-shadow: var(--shadow-card);
   transition: border-color .15s, transform .15s, box-shadow .15s;
 }
 .expr-card:hover {
@@ -930,6 +974,22 @@ header {
    ============================================================ */
 .search-wrap {
   margin-bottom: 24px; margin-top: 48px; position: relative;
+}
+.langue-section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 28px 22px 22px;
+}
+.langue-section-card .section-head {
+  padding-top: 0;
+}
+.langue-section-card .cards-grid {
+  margin-top: 8px;
+}
+.langue-section-card .detail-panel {
+  margin-top: 20px;
 }
 .search-input {
   width: 100%; padding: 12px 18px 12px 44px;

@@ -101,23 +101,25 @@
       <span class="search-icon" aria-hidden="true">⌕</span>
       <input class="search-input" id="searchInput" type="search" placeholder="Search a lesson, a word…">
     </div>
-    <div class="section-head no-padding-top">
-      <div class="section-title" id="langSectionTitle">Language lessons</div>
-      <div class="section-count" id="langCount"></div>
-    </div>
-    <div class="cards-grid" id="langCards"></div>
-    <div class="detail-panel" id="detailPanel">
-      <button type="button" class="detail-close" id="detailClose" title="Close (Esc)">×</button>
-      <div class="detail-phrase" id="dpPhrase"></div>
-      <div class="detail-fr" id="dpFr"></div>
-      <div class="madras-band-thin madras-band-custom"></div>
-      <div class="audio-row">
-        <button type="button" class="play-btn" id="playBtn"><svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg></button>
-        <div class="wave" id="wave"><div class="wbar" style="height:8px"></div><div class="wbar" style="height:16px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:18px"></div><div class="wbar" style="height:12px"></div><div class="wbar" style="height:20px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:10px"></div></div>
-        <span class="audio-lbl" id="audioLbl">Tann fraz-la</span>
+    <section class="langue-section-card" aria-label="Language lessons section">
+      <div class="section-head no-padding-top">
+        <div class="section-title" id="langSectionTitle">Language lessons</div>
+        <div class="section-count" id="langCount"></div>
       </div>
-      <div class="quiz-section"><div class="quiz-q" id="quizQ"></div><div class="quiz-opts" id="quizOpts"></div></div>
-    </div>
+      <div class="cards-grid" id="langCards"></div>
+      <div class="detail-panel" id="detailPanel">
+        <button type="button" class="detail-close" id="detailClose" title="Close (Esc)">×</button>
+        <div class="detail-phrase" id="dpPhrase"></div>
+        <div class="detail-fr" id="dpFr"></div>
+        <div class="madras-band-thin madras-band-custom"></div>
+        <div class="audio-row">
+          <button type="button" class="play-btn" id="playBtn"><svg viewBox="0 0 16 16"><polygon points="3,2 14,8 3,14"/></svg></button>
+          <div class="wave" id="wave"><div class="wbar" style="height:8px"></div><div class="wbar" style="height:16px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:18px"></div><div class="wbar" style="height:12px"></div><div class="wbar" style="height:20px"></div><div class="wbar" style="height:24px"></div><div class="wbar" style="height:10px"></div></div>
+          <span class="audio-lbl" id="audioLbl">Tann fraz-la</span>
+        </div>
+        <div class="quiz-section"><div class="quiz-q" id="quizQ"></div><div class="quiz-opts" id="quizOpts"></div></div>
+      </div>
+    </section>
   </div>
   <div class="tab-pane" id="pane-cuisine"><div class="section-head"><div class="section-title" id="cuisineSectionTitle">Creole cuisine</div><div class="section-count" id="cuisineCount"></div></div><div class="cards-grid" id="cuisineCards"></div></div>
   <div class="tab-pane" id="pane-vie"><div class="section-head"><div class="section-title" id="vieSectionTitle">Daily expressions</div><div class="section-count" id="vieCount"></div></div><div class="cards-grid" id="vieCards"></div></div>
