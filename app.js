@@ -4,6 +4,7 @@
 import { getFam, getUILang } from './state.js';
 import { bindEvents }        from './events.js';
 import { renderFam, setUILangDOM } from './render.js';
+import { bindAuthModal, updateAuthUI } from './auth.js';
 
 function initHeroCarousel() {
   const image = document.getElementById('heroCarouselImage');
@@ -55,8 +56,10 @@ function initHeroCarousel() {
 
 function init() {
   bindEvents();
-  setUILangDOM(getUILang()); // traduit les onglets selon langue UI
-  renderFam(getFam());       // charge kilti par défaut (inclut buildFooterIsos)
+  bindAuthModal();       // initialise la modale d'auth
+  updateAuthUI();        // restaure la session si existante
+  setUILangDOM(getUILang());
+  renderFam(getFam());
   initHeroCarousel();
 }
 

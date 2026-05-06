@@ -11,6 +11,7 @@ import {
   setUILangDOM, togglePlay, closeDetail, stopPlay,
   openLesson, showToast, buildFooterIsos
 } from './render.js';
+import { openAuthModal, logout } from './auth.js';
 
 export function bindEvents() {
 
@@ -27,6 +28,17 @@ export function bindEvents() {
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     themeBtn.textContent = newTheme === 'light' ? '☀' : '☾';
+  });
+
+  /* -- Bouton connexion --------------------------------------- */
+  const authBtn = document.getElementById('authBtn');
+  if (authBtn) authBtn.addEventListener('click', () => openAuthModal('login'));
+
+  /* -- Bouton déconnexion ------------------------------------- */
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    logout();
+    showToast('À bientôt !');
   });
 
   /* -- Sélecteur de langue UI -------------------------------- */

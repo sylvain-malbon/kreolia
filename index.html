@@ -29,6 +29,9 @@
       <select class="lang-select" id="uiLang" aria-label="Interface language">
         <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="nl">NL</option><option value="ar">AR</option>
       </select>
+      <span class="user-chip" id="userChip" style="display:none"></span>
+      <button type="button" class="ctrl-btn auth-btn" id="authBtn" title="Connexion / Inscription">Connexion</button>
+      <button type="button" class="ctrl-btn logout-btn" id="logoutBtn" style="display:none" title="Se déconnecter">✕ Déco</button>
       <button type="button" class="ctrl-btn theme-btn" id="themeBtn" title="Light/dark mode">☀</button>
     </div>
   </div>
@@ -125,6 +128,61 @@
   <div class="footer-bottom"><span>© 2026 Krēolia — All the world's creoles, one platform.</span><div class="footer-iso-pills" id="footerIsoPills"></div></div>
 </footer>
 <div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     MODALE AUTH
+     ============================================================ -->
+<div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="Connexion / Inscription">
+  <div class="auth-modal-box">
+    <button type="button" class="auth-modal-close" id="authModalClose" title="Fermer">×</button>
+    <div class="auth-modal-logo">Krēolia</div>
+
+    <!-- Onglets -->
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab-btn active" data-auth-tab="login">Connexion</button>
+      <button type="button" class="auth-tab-btn" data-auth-tab="register">Inscription</button>
+    </div>
+
+    <!-- Panneau Connexion -->
+    <div class="auth-pane active" data-auth-pane="login">
+      <form id="loginForm" novalidate>
+        <div class="auth-field">
+          <label for="loginEmail">E-mail</label>
+          <input type="email" id="loginEmail" placeholder="vous@exemple.com" autocomplete="email" required>
+        </div>
+        <div class="auth-field">
+          <label for="loginPassword">Mot de passe</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
+        </div>
+        <div class="auth-error" style="display:none"></div>
+        <button type="submit" class="auth-submit">Se connecter</button>
+      </form>
+      <p class="auth-switch">Pas encore de compte ? <a href="#" data-switch-auth="register">S'inscrire</a></p>
+    </div>
+
+    <!-- Panneau Inscription -->
+    <div class="auth-pane" data-auth-pane="register">
+      <form id="registerForm" novalidate>
+        <div class="auth-field">
+          <label for="registerPseudo">Pseudo</label>
+          <input type="text" id="registerPseudo" placeholder="MonPseudo" autocomplete="username" required>
+        </div>
+        <div class="auth-field">
+          <label for="registerEmail">E-mail</label>
+          <input type="email" id="registerEmail" placeholder="vous@exemple.com" autocomplete="email" required>
+        </div>
+        <div class="auth-field">
+          <label for="registerPassword">Mot de passe <small>(min. 6 caractères)</small></label>
+          <input type="password" id="registerPassword" placeholder="••••••••" autocomplete="new-password" required>
+        </div>
+        <div class="auth-error" style="display:none"></div>
+        <button type="submit" class="auth-submit">Créer mon compte</button>
+      </form>
+      <p class="auth-switch">Déjà un compte ? <a href="#" data-switch-auth="login">Se connecter</a></p>
+    </div>
+  </div>
+</div>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
