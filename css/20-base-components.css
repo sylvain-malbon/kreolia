@@ -8,21 +8,11 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
   font-size: var(--step-0);
-  /* Tartan / madras-like grid — reste sur body pour transition douce
-     entre familles/thèmes. will-change optimise le repaint. */
   background:
-    repeating-linear-gradient(90deg,
-      color-mix(in srgb, var(--bg-page) 82%, black 18%) 0 2px,
-      transparent 2px 48px),
-    repeating-linear-gradient(90deg,
-      color-mix(in srgb, var(--bg-page) 92%, black 8%) 0 1px,
-      transparent 1px 16px),
-    repeating-linear-gradient(0deg,
-      color-mix(in srgb, var(--bg-page) 82%, black 18%) 0 2px,
-      transparent 2px 48px),
-    repeating-linear-gradient(0deg,
-      color-mix(in srgb, var(--bg-page) 92%, black 8%) 0 1px,
-      transparent 1px 16px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--text-1) 4%, transparent) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--text-1) 2.5%, transparent) 12px 14px, transparent 14px 48px),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--text-1) 4%, transparent) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--text-1) 2.5%, transparent) 12px 14px, transparent 14px 48px),
     var(--bg-page);
   background-attachment: fixed;
   will-change: background;
@@ -154,9 +144,9 @@ header {
 }
 
 .header-inner {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  max-width: 1180px;
   margin: 0 auto;
-  padding-inline: var(--site-gutter);
+  padding: 0 16px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -353,9 +343,9 @@ header {
   transition: background .25s, border-color .25s;
 }
 .search-bar-inner {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  max-width: 1180px;
   margin: 0 auto;
-  padding-inline: var(--site-gutter);
+  padding: 0 16px;
   position: relative;
 }
 
@@ -368,9 +358,9 @@ header {
   transition: background .25s, border-color .25s;
 }
 .tabbar-inner {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  max-width: 1180px;
   margin: 0 auto;
-  padding-inline: var(--site-gutter);
+  padding: 0 16px;
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
@@ -478,9 +468,6 @@ header {
    ============================================================ */
 .creole-filters { width: 100%; }
 .creole-filters-inner {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
-  margin: 0 auto;
-  padding: 24px var(--site-gutter) 0;
   width: 100%;
 }
 
@@ -500,21 +487,32 @@ header {
 
 .hero {
   background: var(--bg-card);
-  border-radius: var(--radius-md);
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  border-radius: var(--radius-lg);
+  max-width: 1180px;
   margin: 18px auto 10px;
-  padding: 8px;
+  padding: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
   transition: border-color .25s, background .25s;
 }
 
-.hero-inner {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 36px 16px 48px;
+.hero-layout {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  gap: 48px;
-  align-items: flex-start;
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+.hero-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-inner-left {
+  padding-top: 32px;
+  padding-bottom: 16px;
 }
 
 .hero-eyebrow {
@@ -607,12 +605,12 @@ header {
 /* Hero right — image carousel */
 .hero-right {
   background: var(--bg-surface);
-  border-radius: var(--radius-lg);
+  border-radius: calc(var(--radius-lg) - 4px);
   border: 1px solid var(--border);
   padding: 0;
   overflow: hidden;
   position: relative;
-  min-height: 460px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -705,14 +703,9 @@ header {
 }
 
 /* ============================================================
-  MAIN CONTENT
-  ============================================================ */
-.main {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
-  margin: 0 auto;
-  padding-inline: var(--site-gutter);
-  padding-bottom: 80px;
-}
+   MAIN CONTENT
+   ============================================================ */
+.main { max-width: 1180px; margin: 0 auto; padding: 0 16px 80px; }
 
 .section-head {
   display: flex;
@@ -738,7 +731,7 @@ header {
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-  gap: 16px;
+  gap: var(--gutter);
 }
 
 .lesson-card {
@@ -809,7 +802,7 @@ header {
 .card-iso { font-size: 11px; font-family: monospace; }
 
 /* ============================================================
-   DETAIL PANEL — display: none/block + fadeIn propre
+   DETAIL PANEL
    ============================================================ */
 .detail-panel {
   display: none;
@@ -827,14 +820,8 @@ header {
 }
 
 @keyframes detail-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .detail-close {
@@ -969,29 +956,19 @@ header {
    FAMILY BANNER
    ============================================================ */
 .fam-banner {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-top: 40px;
-  margin-bottom: 0;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--gutter);
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: start;
+  gap: var(--gutter);
+  align-items: center;
   transition: background .25s, border-color .25s;
   position: relative;
   overflow: hidden;
+  border-left: 4px solid var(--primary);
 }
-.fam-banner::before {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0; left: 0;
-  width: 5px;
-  background: linear-gradient(180deg,
-    var(--primary),
-    color-mix(in srgb, var(--primary) 70%, var(--accent) 30%));
-}
-
 .fam-banner-title {
   font-family: var(--font-serif);
   font-size: var(--step-3);
@@ -1257,9 +1234,9 @@ footer {
   transition: background .25s, border-color .25s;
 }
 .footer-inner {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 52px var(--site-gutter) 36px;
+  padding: 52px 16px 36px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 0.8fr;
   gap: 48px;
@@ -1303,9 +1280,9 @@ footer {
   letter-spacing: .05em;
 }
 .footer-bottom {
-  max-width: min(var(--site-max-width), calc(100% - 2 * var(--site-gutter)));
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 16px var(--site-gutter) 28px;
+  padding: 16px 28px 28px;
   font-size: 11px;
   border-top: 1px solid var(--border);
   display: flex;
@@ -1323,4 +1300,3 @@ footer {
   color: var(--text-3);
   border: 1px solid var(--border);
 }
-

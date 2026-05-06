@@ -1,6 +1,3 @@
-/* ============================================================
-   RENDER — rendu DOM
-   ============================================================ */
 import { FAMILIES, UI_LABELS, APROPOS_CONTENT } from './data.js';
 import {
   getFam, getTab, getCultureTab, getUILang,
@@ -10,9 +7,6 @@ import {
 } from './state.js';
 import { getSession } from './auth.js';
 
-/* ============================================================
-   HELPERS
-   ============================================================ */
 function ui() { return UI_LABELS[getUILang()] || UI_LABELS.fr; }
 function fam() { return FAMILIES[getFam()]; }
 
@@ -25,56 +19,40 @@ function setText(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text;
 }
-function setHTML(id, html) {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = html;
-}
 
-/* ============================================================
-   RENDER FAM — point d'entrée principal
-   ============================================================ */
 export function renderFam(famKey) {
   const f = FAMILIES[famKey]; if (!f) return;
   const _ui = ui();
   const tab = getTab();
 
-  /* -- Header logo -- */
   const headerLogo = document.getElementById('headerLogo');
   if (headerLogo) {
     headerLogo.textContent = f.name;
     headerLogo.className = 'logo ' + (f.nameClass || '');
   }
 
-  /* -- Hero adaptatif -- */
   renderHero(famKey, tab);
 
-  /* -- Chip label -- */
   const heroChipLabel = document.getElementById('heroChipLabel');
   if (heroChipLabel)
     heroChipLabel.textContent = _ui.chipLabel + ' ' + formatHeroBaseLabel(getUILang(), _ui.bases[f.base] ?? f.base);
 
-  /* -- Audio label -- */
   setText('audioLbl', f.audioLbl);
-
-  /* -- Banner -- */
   setText('bannerTitle', f.name);
   setText('bannerBaseline', f.baseline);
   setText('bannerDesc', f.desc);
   setText('statCount', f.creoles.length);
   setText('statSpeakers', f.speakers);
 
-  /* -- Footer -- */
   setText('footerLogo', f.name);
   const footerTagline = document.getElementById('footerTagline');
   if (footerTagline) footerTagline.textContent = f.footer + '\n' + _ui.footerTaglineSuffix;
 
-  /* -- Onglets principaux labels -- */
   setText('tab-langue',     _ui.langue);
   setText('tab-culture',    _ui.culture);
   setText('tab-apropos',    _ui.apropos);
   setText('tab-communaute', _ui.communaute);
 
-  /* -- Search placeholder -- */
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.placeholder = tab === 'culture'
@@ -82,24 +60,16 @@ export function renderFam(famKey) {
       : _ui.searchPlaceholder;
   }
 
-  /* -- Chips créoles -- */
   renderChips(famKey);
-
-  /* -- Progress strip (langue uniquement) -- */
   renderProgressStrip(famKey);
-
-  /* -- Contenu onglet actif -- */
   renderTab(tab, famKey);
 }
 
-/* ============================================================
-   HERO ADAPTATIF
-   ============================================================ */
 export function renderHero(famKey, tab) {
   const f = FAMILIES[famKey]; if (!f) return;
   const _ui = ui();
+  const sel = getSelectedCreole();
 
-  /* Titre & sous-titre */
   const heroTitle = document.getElementById('heroTitle');
   if (heroTitle) {
     heroTitle.textContent = f.heroTitles?.[tab] ?? f.title;
@@ -108,26 +78,36 @@ export function renderHero(famKey, tab) {
   const heroSub = document.getElementById('heroSub');
   if (heroSub) heroSub.textContent = f.heroSubs?.[tab] ?? f.sub;
 
-  /* Eyebrow */
   setText('heroEyebrow', f.eyebrow);
 
-  /* Boutons hero selon onglet */
+  /* Logique de boutons par chips */
   const btnPLabel = document.getElementById('heroBtnPLabel');
   const btnSLabel = document.getElementById('heroBtnSLabel');
-  if (btnPLabel) btnPLabel.textContent = _ui[`heroBtnP_${tab}`] ?? f.btnP;
-  if (btnSLabel) btnSLabel.textContent = _ui[`heroBtnS_${tab}`] ?? f.btnS;
+  
+  let finalBtnP = f.btnP;
+  let finalBtnS = f.btnS;
+  
+  if (tab === 'langue') {
+    if (sel !== null && f.creoles[+sel]) {
+      finalBtnP = f.creoles[+sel].btnP || f.btnP;
+      finalBtnS = f.creoles[+sel].btnS || f.btnS;
+    } else {
+      finalBtnP = f.btnP;
+      finalBtnS = f.btnS;
+    }
+  } else {
+    finalBtnP = _ui[`heroBtnP_${tab}`] ?? f.btnP;
+    finalBtnS = _ui[`heroBtnS_${tab}`] ?? f.btnS;
+  }
 
-  /* Images carousel selon onglet */
+  if (btnPLabel) btnPLabel.textContent = finalBtnP;
+  if (btnSLabel) btnSLabel.textContent = finalBtnS;
+
   const images = f.heroImages?.[tab] ?? ['assets/images/hero-visual.jpg'];
   updateCarouselImages(images);
 }
 
-/* pool d'images courant pour le carousel */
-let _carouselImages = [
-  'assets/images/hero-visual.jpg',
-  'assets/images/hero-visual-2.jpg',
-  'assets/images/hero-visual-3.jpg'
-];
+let _carouselImages = ['assets/images/hero-visual.jpg'];
 let _carouselIndex = 0;
 
 export function updateCarouselImages(images) {
@@ -138,7 +118,6 @@ export function updateCarouselImages(images) {
     img.src = _carouselImages[0];
     img.classList.remove('is-fading');
   }
-  /* Sync barres */
   const bars = document.querySelectorAll('.hero-carousel-bar');
   bars.forEach((b, i) => b.classList.toggle('active', i === 0));
 }
@@ -158,9 +137,6 @@ export function carouselNext() {
   }, 220);
 }
 
-/* ============================================================
-   CHIPS CRÉOLES
-   ============================================================ */
 export function renderChips(famKey) {
   const f = FAMILIES[famKey];
   const sel = getSelectedCreole();
@@ -178,9 +154,6 @@ export function renderChips(famKey) {
   });
 }
 
-/* ============================================================
-   PROGRESS STRIP
-   ============================================================ */
 export function renderProgressStrip(famKey) {
   const f = FAMILIES[famKey];
   const s = document.getElementById('progressStrip');
@@ -196,9 +169,6 @@ export function renderProgressStrip(famKey) {
   }
 }
 
-/* ============================================================
-   DISPATCH ONGLETS
-   ============================================================ */
 export function renderTab(tab, famKey) {
   if      (tab === 'langue')     renderLangue(famKey);
   else if (tab === 'culture')    renderCulture(famKey);
@@ -206,9 +176,6 @@ export function renderTab(tab, famKey) {
   else if (tab === 'communaute') renderCommunaute();
 }
 
-/* ============================================================
-   ONGLET LANGUE
-   ============================================================ */
 export function renderLangue(famKey) {
   const f = FAMILIES[famKey];
   const sel = getSelectedCreole();
@@ -309,19 +276,14 @@ export function closeDetail() {
   document.getElementById('detailPanel')?.classList.remove('open');
 }
 
-/* ============================================================
-   ONGLET CULTURE — sous-onglets
-   ============================================================ */
 export function renderCulture(famKey) {
   const _ui = ui();
   const sub = getCultureTab();
 
-  /* Labels sous-onglets */
   setText('subTab-voyage',  _ui.cultureSubTabs.voyage);
   setText('subTab-cuisine', _ui.cultureSubTabs.cuisine);
   setText('subTab-musique', _ui.cultureSubTabs.musique);
 
-  /* Activer le bon sous-onglet */
   document.querySelectorAll('.culture-sub-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.sub === sub)
   );
@@ -334,7 +296,6 @@ export function renderCulture(famKey) {
   else if (sub === 'musique') renderMusique(famKey);
 }
 
-/* ---- Voyage ---- */
 export function renderVoyage(famKey) {
   const f = FAMILIES[famKey];
   const _ui = ui();
@@ -367,7 +328,6 @@ export function renderVoyage(famKey) {
   });
 }
 
-/* ---- Cuisine ---- */
 export function renderCuisine(famKey) {
   const f = FAMILIES[famKey];
   const _ui = ui();
@@ -404,7 +364,6 @@ export function renderCuisine(famKey) {
   });
 }
 
-/* ---- Musique ---- */
 export function renderMusique(famKey) {
   const f = FAMILIES[famKey];
   const _ui = ui();
@@ -441,9 +400,6 @@ export function renderMusique(famKey) {
   });
 }
 
-/* ============================================================
-   ONGLET À PROPOS
-   ============================================================ */
 export function renderApropos() {
   const _ui = ui();
   const lang = getUILang();
@@ -474,9 +430,6 @@ export function renderApropos() {
     </div>`;
 }
 
-/* ============================================================
-   ONGLET COMMUNAUTÉ
-   ============================================================ */
 const POSTS_KEY = 'kreolia_posts';
 
 function getPosts() {
@@ -521,7 +474,6 @@ export function renderCommunaute() {
     ${composeHTML}
     <div class="posts-list">${postsHTML}</div>`;
 
-  /* Bind textarea charcount + submit */
   const textarea = document.getElementById('postTextarea');
   const charCount = document.getElementById('postCharCount');
   const submitBtn = document.getElementById('postSubmitBtn');
@@ -545,9 +497,6 @@ export function renderCommunaute() {
   }
 }
 
-/* ============================================================
-   UI LANG DOM — met à jour toute l'interface
-   ============================================================ */
 export function setUILangDOM(lang) {
   const _ui = UI_LABELS[lang] || UI_LABELS.fr;
   setText('tab-langue',     _ui.langue);
@@ -564,11 +513,9 @@ export function setUILangDOM(lang) {
   const searchInput = document.getElementById('searchInput');
   if (searchInput) searchInput.placeholder = _ui.searchPlaceholder;
 
-  /* Boutons auth */
   setText('authBtn',    _ui.loginBtn);
   setText('logoutBtn',  _ui.logoutBtn);
 
-  /* Modale */
   document.querySelectorAll('.auth-tab-btn').forEach(b => {
     if (b.dataset.authTab === 'login')    b.textContent = _ui.loginTitle;
     if (b.dataset.authTab === 'register') b.textContent = _ui.registerTitle;
@@ -580,9 +527,6 @@ export function setUILangDOM(lang) {
     heroChipLabel.textContent = _ui.chipLabel + ' ' + formatHeroBaseLabel(lang, _ui.bases[f.base] ?? f.base);
 }
 
-/* ============================================================
-   AUDIO / PLAY
-   ============================================================ */
 export function togglePlay() {
   if (isPlaying()) { stopPlay(); return; }
   setPlaying(true);
@@ -600,9 +544,6 @@ export function stopPlay() {
   if (b) b.innerHTML = '<svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 14,8 3,14"/></svg>';
 }
 
-/* ============================================================
-   TOAST
-   ============================================================ */
 export function showToast(msg) {
   const t = document.getElementById('toast');
   if (!t) return;

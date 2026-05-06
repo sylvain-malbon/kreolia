@@ -1,6 +1,3 @@
-/* ============================================================
-   EVENTS — délégation et écouteurs
-   ============================================================ */
 import {
   getFam, setFam,
   getTab, setTab,
@@ -19,9 +16,6 @@ import {
 import { openAuthModal, logout } from './auth.js';
 import { UI_LANGUAGES, UI_LABELS } from './data.js';
 
-/* ============================================================
-   INIT SÉLECTEUR DE LANGUE (v1 + v2 grisés)
-   ============================================================ */
 function initLangSelect() {
   const sel = document.getElementById('uiLang');
   if (!sel) return;
@@ -37,9 +31,6 @@ function initLangSelect() {
   sel.value = getUILang();
 }
 
-/* ============================================================
-   CAROUSEL — intervalle global
-   ============================================================ */
 let _carouselInterval = null;
 
 function startCarousel() {
@@ -49,23 +40,14 @@ function startCarousel() {
 
 export function bindEvents() {
 
-  /* -- Init sélecteur langue -- */
   initLangSelect();
-
-  /* -- Démarrer carousel -- */
   startCarousel();
 
-  /* --------------------------------------------------------
-     Brand logo : scroll top
-     -------------------------------------------------------- */
   const brand = document.querySelector('.brand');
   if (brand) brand.addEventListener('click', () =>
     window.scrollTo({ top: 0, behavior: 'smooth' })
   );
 
-  /* --------------------------------------------------------
-     Bouton thème
-     -------------------------------------------------------- */
   const themeBtn = document.getElementById('themeBtn');
   if (themeBtn) themeBtn.addEventListener('click', () => {
     const newTheme = getTheme() === 'light' ? 'dark' : 'light';
@@ -74,9 +56,6 @@ export function bindEvents() {
     themeBtn.textContent = newTheme === 'light' ? '☀' : '☾';
   });
 
-  /* --------------------------------------------------------
-     Menu burger
-     -------------------------------------------------------- */
   const menuToggle = document.getElementById('menuToggle');
   if (menuToggle) {
     menuToggle.addEventListener('click', () => {
@@ -86,9 +65,6 @@ export function bindEvents() {
     });
   }
 
-  /* --------------------------------------------------------
-     Auth
-     -------------------------------------------------------- */
   const authBtn = document.getElementById('authBtn');
   if (authBtn) authBtn.addEventListener('click', () => openAuthModal('login'));
 
@@ -98,9 +74,6 @@ export function bindEvents() {
     showToast('À bientôt !');
   });
 
-  /* --------------------------------------------------------
-     Sélecteur langue UI
-     -------------------------------------------------------- */
   const uiLangSel = document.getElementById('uiLang');
   if (uiLangSel) uiLangSel.addEventListener('change', e => {
     const lang = e.target.value;
@@ -109,9 +82,6 @@ export function bindEvents() {
     renderFam(getFam());
   });
 
-  /* --------------------------------------------------------
-     Recherche globale (sous le header)
-     -------------------------------------------------------- */
   const searchInput = document.getElementById('searchInput');
   if (searchInput) searchInput.addEventListener('input', e => {
     setSearchQuery(e.target.value.toLowerCase().trim());
@@ -120,15 +90,9 @@ export function bindEvents() {
     else if (tab === 'culture') renderCulture(getFam());
   });
 
-  /* --------------------------------------------------------
-     Bouton play
-     -------------------------------------------------------- */
   const playBtn = document.getElementById('playBtn');
   if (playBtn) playBtn.addEventListener('click', togglePlay);
 
-  /* --------------------------------------------------------
-     Fermer détail panel
-     -------------------------------------------------------- */
   const detailClose = document.getElementById('detailClose');
   if (detailClose) detailClose.addEventListener('click', closeDetail);
 
@@ -136,9 +100,6 @@ export function bindEvents() {
     if (e.key === 'Escape') closeDetail();
   });
 
-  /* ========================================================
-     DÉLÉGATION — fam-pills
-     ======================================================== */
   const famPillsEl = document.getElementById('famPills');
   if (famPillsEl) famPillsEl.addEventListener('click', e => {
     const pill = e.target.closest('.fam-pill');
@@ -158,17 +119,12 @@ export function bindEvents() {
     );
     document.documentElement.setAttribute('data-fam', newFam);
 
-    /* Redémarrer carousel avec les nouvelles images */
     startCarousel();
-
     renderFam(newFam);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     showToast('Family ' + newFam + ' loaded');
   });
 
-  /* ========================================================
-     DÉLÉGATION — onglets principaux (4 tabs)
-     ======================================================== */
   const tabbarInner = document.querySelector('.tabbar-inner');
   if (tabbarInner) tabbarInner.addEventListener('click', e => {
     const tabBtn = e.target.closest('.tab-btn');
@@ -180,11 +136,9 @@ export function bindEvents() {
     closeDetail();
     stopPlay();
 
-    /* Reset search */
     setSearchQuery('');
     if (searchInput) searchInput.value = '';
 
-    /* Activer le bon onglet */
     document.querySelectorAll('.tab-btn').forEach(b =>
       b.classList.toggle('active', b === tabBtn)
     );
@@ -192,7 +146,6 @@ export function bindEvents() {
       p.classList.toggle('active', p.id === 'pane-' + newTab)
     );
 
-    /* Mettre à jour le placeholder de recherche */
     if (searchInput) {
       const _ui = UI_LABELS[getUILang()] || UI_LABELS.fr;
       searchInput.placeholder = newTab === 'culture'
@@ -200,19 +153,11 @@ export function bindEvents() {
         : _ui.searchPlaceholder;
     }
 
-    /* Hero adaptatif */
     renderHero(getFam(), newTab);
-
-    /* Redémarrer carousel */
     startCarousel();
-
-    /* Contenu */
     renderTab(newTab, getFam());
   });
 
-  /* ========================================================
-     DÉLÉGATION — sous-onglets Culture
-     ======================================================== */
   const cultureSubbar = document.getElementById('cultureSubbar');
   if (cultureSubbar) cultureSubbar.addEventListener('click', e => {
     const btn = e.target.closest('.culture-sub-btn');
@@ -234,9 +179,6 @@ export function bindEvents() {
     renderCulture(getFam());
   });
 
-  /* ========================================================
-     DÉLÉGATION — creole chips
-     ======================================================== */
   const creoleChipsEl = document.getElementById('creoleChips');
   if (creoleChipsEl) creoleChipsEl.addEventListener('click', e => {
     const chip = e.target.closest('.creole-chip');
@@ -248,12 +190,10 @@ export function bindEvents() {
     closeDetail();
 
     renderChips(getFam());
+    renderHero(getFam(), getTab()); // <--- Mise à jour dynamique des boutons
     renderTab(getTab(), getFam());
   });
 
-  /* ========================================================
-     DÉLÉGATION — lesson cards
-     ======================================================== */
   const langCards = document.getElementById('langCards');
   if (langCards) langCards.addEventListener('click', e => {
     const listenBtn = e.target.closest('.btn-listen');
@@ -266,9 +206,6 @@ export function bindEvents() {
     }
   });
 
-  /* ========================================================
-     DÉLÉGATION — footer links fam + tab
-     ======================================================== */
   const footerEl = document.querySelector('footer');
   if (footerEl) footerEl.addEventListener('click', e => {
     const link = e.target.closest('a[data-fam], a[data-tab]');

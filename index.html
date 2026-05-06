@@ -76,31 +76,38 @@
 </nav>
 
 <!-- ============================================================
-     HERO
+     HERO & FAM-BANNER RESTRUCTURÉS
      ============================================================ -->
 <div class="hero" id="heroSection">
-  <div class="creole-filters">
-    <div class="creole-filters-inner">
-      <div class="creole-grid-label" id="heroChipLabel">Famille créole à base de</div>
-      <div class="creole-chips" id="creoleChips"></div>
-    </div>
-  </div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow" id="heroEyebrow">Lang péyi nou</div>
-      <div class="hero-title" id="heroTitle">Aprann Kréyòl</div>
-      <div class="hero-sub" id="heroSub">Guadeloupe · Martinique · Réunion · Maurice · Louisiane · Haïti</div>
-      <div class="hero-btns">
-        <button type="button" class="btn-primary btn-with-icon" id="heroBtnP">
-          <span class="btn-icon btn-glyph btn-glyph-reset" aria-hidden="true">↺</span>
-          <span class="btn-text" id="heroBtnPLabel">Kòmansé dèpi zéro</span>
-        </button>
-        <button type="button" class="btn-secondary btn-with-icon" id="heroBtnS">
-          <span class="btn-icon btn-glyph btn-glyph-check" aria-hidden="true">✓</span>
-          <span class="btn-text" id="heroBtnSLabel">Mwen ja ka konpwann</span>
-        </button>
+  <div class="hero-layout">
+    
+    <!-- Colonne Gauche : Filtres + Texte -->
+    <div class="hero-content-left">
+      <div class="creole-filters">
+        <div class="creole-filters-inner">
+          <div class="creole-grid-label" id="heroChipLabel">Famille créole à base de</div>
+          <div class="creole-chips" id="creoleChips"></div>
+        </div>
+      </div>
+
+      <div class="hero-inner-left">
+        <div class="hero-eyebrow" id="heroEyebrow">Lang péyi nou</div>
+        <div class="hero-title" id="heroTitle">Aprann Kréyòl</div>
+        <div class="hero-sub" id="heroSub">Guadeloupe · Martinique · Réunion · Maurice · Louisiane · Haïti</div>
+        <div class="hero-btns">
+          <button type="button" class="btn-primary btn-with-icon" id="heroBtnP">
+            <span class="btn-icon btn-glyph btn-glyph-reset" aria-hidden="true">↺</span>
+            <span class="btn-text" id="heroBtnPLabel">Kòmansé dèpi zéro</span>
+          </button>
+          <button type="button" class="btn-secondary btn-with-icon" id="heroBtnS">
+            <span class="btn-icon btn-glyph btn-glyph-check" aria-hidden="true">✓</span>
+            <span class="btn-text" id="heroBtnSLabel">Mwen ja ka konpwann</span>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- Colonne Droite : Image -->
     <div class="hero-right">
       <img src="assets/images/hero-visual.jpg" alt="Hero Visual" class="hero-img" id="heroCarouselImage">
       <div class="hero-carousel-controls" aria-hidden="true">
@@ -110,17 +117,11 @@
       </div>
       <div class="progress-strip" id="progressStrip"></div>
     </div>
-  </div>
-</div>
+  </div> <!-- Fin hero-layout -->
 
-<!-- ============================================================
-     MAIN
-     ============================================================ -->
-<main class="main">
-
-  <!-- Bannière famille -->
+  <!-- Fam Banner intégré en bas du Hero -->
   <div class="fam-banner" id="famBanner">
-    <div>
+    <div class="fam-banner-info">
       <div class="fam-banner-title" id="bannerTitle">Kilti</div>
       <div class="fam-banner-baseline" id="bannerBaseline">Aprann kréyòl — Learn Creole</div>
       <div class="fam-banner-desc" id="bannerDesc"></div>
@@ -131,6 +132,12 @@
       <div class="stat-pill"><strong>Culture</strong> Langue & Musique</div>
     </div>
   </div>
+</div>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main class="main">
 
   <!-- ======================================================
        ONGLET LANGUE

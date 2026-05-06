@@ -6,8 +6,6 @@
   --font-body: 'DM Sans', sans-serif;
   --font-ar: 'Amiri', serif;
   --font-serif: 'Libre Baskerville', serif;
-  --site-max-width: 1180px;
-  --site-gutter: 16px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -23,6 +21,9 @@
   --step-3: clamp(1.6rem, 1.3rem + 0.8vw, 1.953rem);
   --step-4: clamp(2rem, 1.5rem + 1.5vw, 2.441rem);
   --step-5: clamp(2.4rem, 1.8rem + 2vw, 4.25rem);
+  
+  /* Gouttière universelle */
+  --gutter: 24px;
 }
 
 /* Base factorisee: carte claire commune a toutes les familles en mode light */
@@ -173,4 +174,3 @@
   --madras-d:#E0C030; --madras-e:#7060C0;
   --hero-grad: linear-gradient(135deg, #0C1812 0%, #081510 100%);
 }
-
