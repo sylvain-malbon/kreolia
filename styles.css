@@ -237,7 +237,7 @@ header {
   max-width: 1180px; margin: 0 auto;
   padding: 0 16px;
   display: flex; align-items: center;
-  gap: 20px; height: 62px;
+  gap: 16px; height: 62px;
 }
 
 /* Nouvel agencement Brand (Logo + Texte) */
@@ -327,20 +327,22 @@ header {
 
 /* Family pills */
 .fam-pills {
-  display: flex; gap: 6px; flex-wrap: wrap;
+  display: flex; gap: 4px; flex-wrap: nowrap;
   flex: 1; padding: 4px 0;
-  margin-left: 8px;
+  margin-left: 4px;
+  overflow: hidden;
 }
 .fam-pill {
-  font-size: 12px; font-weight: 500; white-space: nowrap;
-  padding: 5px 14px; border-radius: 50px; cursor: pointer;
+  font-size: 11px; font-weight: 500; white-space: nowrap;
+  padding: 4px 10px; border-radius: 50px; cursor: pointer;
   border: 1px solid var(--border);
   background: transparent; color: var(--text-2);
   transition: color .15s, background-color .15s, border-color .15s;
+  flex-shrink: 0;
 }
 .fam-pill:hover { border-color: var(--border-2); color: var(--text-1); background: var(--bg-surface); }
 .fam-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-.fam-pill .pill-iso { font-size: 10px; opacity: .6; font-family: monospace; margin-left: 5px; }
+.fam-pill .pill-iso { font-size: 10px; opacity: .6; font-family: monospace; margin-left: 3px; }
 
 .header-controls { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
 .ctrl-btn {
