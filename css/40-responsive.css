@@ -51,7 +51,7 @@
     gap: 10px;
     padding: 8px 16px;
   }
-  .fam-pills { margin-left: 0; }
+  .fam-pills { margin-inline: 0; }
 
   .section-head {
     flex-direction: column;
@@ -75,7 +75,7 @@
   .brand-logo { width: 36px; height: 40px; }
   .logo { font-size: 20px; }
   .brand-by { font-size: 9px; }
-  .fam-pills { gap: 3px; margin-left: 2px; }
+  .fam-pills { gap: 3px; margin-inline: 0; }
   .fam-pill { padding: 4px 8px; font-size: 10px; }
   .fam-pill .pill-iso { display: none; }
   .header-controls { gap: 4px; }
@@ -157,7 +157,7 @@
   .brand-logo { width: 28px; height: 32px; }
   .logo { font-size: 16px; letter-spacing: 0; }
   .brand-text-wrapper { gap: 2px; }
-  .fam-pills { margin-left: 0; }
+  .fam-pills { margin-inline: 0; }
   .header-controls .lang-select { display: none; }
 
   .hero-inner { padding: 16px 10px 18px; }
